@@ -1,0 +1,140 @@
+.funcionamento-corpo {
+    background-image: url(../../assets/img/background/funcionamentoBG.png);
+    width: 100%;
+    height: auto;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    padding-top: 10rem;
+
+}
+
+.titulo-principal {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    padding-bottom: 6rem;
+    text-transform: uppercase;
+}
+
+.titulo-funcionamento {
+    color: #FFFFFF;
+    font-weight: bolder;
+    font-size: 1.5rem;
+}
+
+.subtitulo {
+    color: var(--paragrafo);
+}
+
+.bola {
+    height: 10px;
+    width: 10px;
+    background: linear-gradient(var(--azul-ecsuro), var(--azul-claro));
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.coluna-card {
+    transition: all 0.2s ease-in-out;
+}
+
+.subtitulo {
+    color: #ffffff;
+    font-weight: bolder;
+    font-size: 1rem;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+    transition: all 0.2s ease-in-out;
+}
+
+.subtitulo-corpo::after {
+    content: "";
+    display: block !important;
+    position: absolute;
+    height: 2px;
+    left: 0;
+    right: 0;
+    top: 54px;
+    z-index: 1;
+    background-image: -webkit-linear-gradient(left, #379CCF 0%, #6FC5DA 100%);
+    background-image: -o-linear-gradient(left, #379CCF 0%, #6FC5DA 100%);
+    background-image: linear-gradient(to right, #379CCF 0%, #6FC5DA 100%);
+    background-repeat: repeat-x;
+
+}
+
+
+.descricao::before {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 50%;
+    top: 0;
+    width: 12px;
+    height: 12px;
+    margin: -3px 0 0 -6px;
+    background: var(--bgk);
+    border: 2px solid var(--azul-ecsuro);
+    border-radius: 50%;
+    z-index: 2;
+    transition: all 0.2s ease-in-out;
+}
+
+.descricao {
+    display: block;
+    position: relative;
+    padding-top: 2rem;
+
+}
+
+.descricao-texto {
+    color: var(--paragrafo);
+    font-size: 1rem;
+    transition: all 0.2s ease-in-out;
+}
+
+.coluna-card:hover .descricao::before {
+    background: var(--azul-claro);
+    filter: opacity(70%);
+    transform: scale(4.4);
+    border: none;
+
+}
+
+.coluna-card:hover .descricao::after {
+    content: "\f00c";
+    display: block;
+    position: absolute;
+    font-size: 14px;
+    font-weight: bolder;
+    left: 50%;
+    top: 0;
+    margin: -3px 0 0 -6px;
+    color: #ffffff;
+    z-index: 222;
+    -webkit-transition: 0.2s;
+    -o-transition: 0.2s;
+    transition: 0.2s;
+    -webkit-transition-delay: 0;
+    transition-delay: 0;
+    font-family: 'FontAwesome';
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.coluna-card:hover .descricao-texto {
+
+    transform: translateY(20px);
+
+}
+
+.coluna-card:hover .subtitulo {
+
+    transform: translateY(-20px);
+
+}

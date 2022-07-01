@@ -1,0 +1,180 @@
+
+
+ 
+.bg_main {
+    width: 100%;
+    height: 100%;
+  
+  }
+  
+  .titles {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+    text-transform: uppercase;
+    z-index: 100;
+    flex-direction: column;
+    animation: titleAnimation 6s ease-in-out;
+  }
+  
+  .bolder {
+    font-weight: 800;
+    color: var(--azul);
+  
+  }
+  
+  
+  .glitch span {
+    background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/209981/6963bbf342d87b3a2150bd8f59682b89.jpg);
+    -webkit-background-clip: text;
+    background-size: contain;
+    background-clip: text;
+    font-family: 'frozen', serif;
+    color: transparent;
+    font-weight: 500;
+  }
+  
+  
+  .banner-subtitle {
+    font-size: 0.95rem;
+  
+    font-weight: 500;
+  }
+  
+  .elementor-icon i {
+    color: var(--azul-claro);
+  }
+  
+  
+  
+  @keyframes titleAnimation {
+    0% {
+      transform: translateY(-50px);
+      opacity: 0;
+      -webkit-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 80%);
+      clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 80%);
+    }
+  
+    20% {
+      transform: translateY(0);
+      opacity: 1;
+      -webkit-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 15%);
+      clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 15%);
+    }
+  
+    80% {
+      transform: translateY(0);
+      opacity: 1;
+      -webkit-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 15%);
+      clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 15%);
+    }
+  
+  }
+  
+  
+  /* 
+  ------------------------arrow------------------------- */
+  .arrow {
+    position: absolute;
+    top: 80%;
+    left: 4%;
+    transform: translate(-50%, -50%);
+  
+  }
+  
+  .arrow span {
+    display: block;
+    width: 30px;
+    height: 30px;
+    border-bottom: 5px solid #ffffff;
+    border-right: 5px solid #ffffff;
+    transform: rotate(45deg);
+    margin: -10px;
+    animation: animate 2s infinite, paths 5s step-end infinite;
+  }
+  
+  .arrow span:nth-child(2) {
+    animation-delay: -0.2s;
+  }
+  
+  .arrow span:nth-child(3) {
+    animation-delay: -0.4s;
+  }
+  
+  @keyframes animate {
+    0% {
+      opacity: 0;
+      transform: rotate(45deg) translate(-20px, -20px);
+    }
+  
+    50% {
+      opacity: 1;
+    }
+  
+    100% {
+      opacity: 0;
+      transform: rotate(45deg) translate(20px, 20px);
+    }
+  }
+  
+  
+
+ 
+ 
+  @media(max-width:1024px) {
+   
+    
+    .arrow {
+      z-index: 2;
+    }
+   
+  
+  }
+  
+ 
+  @media (max-width:991px) {
+   
+    
+    .display-1 {
+      font-size: 4.5rem;
+    }
+  
+  
+  }
+  
+  
+  @media (max-width: 634px) {
+    .display-1 {
+      font-size: 3rem;
+    }
+  
+    .arrow {
+      top: 80%;
+      left: 50%;
+    }
+  
+  
+  }
+   
+  
+  @media(max-width:437px) {
+    .display-1 {
+      font-size: 2rem;
+    }
+  
+    .banner-subtitle {
+      font-size: 1rem;
+  
+    }
+   
+  }
+   
+  
+  @font-face {
+    font-family: 'frozen';
+    src: url("../../assets/font/Nelson\ Engraved.otf");
+  }

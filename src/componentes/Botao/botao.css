@@ -1,0 +1,33 @@
+
+.btn {
+    padding: 15px 30px 15px 30px;
+    font-family: "Lato", Sans-serif;
+    font-size: 0.95rem;
+    font-weight: 400;
+    background: linear-gradient(to right, var(--azul-ecsuro), var(--azul-claro));
+    border-style: none;
+    border-radius: 15px 1px 15px 1px;
+    color: white;
+   text-transform: uppercase;
+}
+
+.btn:hover {
+    background: linear-gradient(to right, white,white);
+  
+    color: var(--azul-ecsuro);
+    transition: all 0.2s ease-in-out;
+   
+}
+
+
+
+@media (max-width:991px) {
+
+   
+    .btn {
+      margin-bottom: 1rem;
+      margin-top: 0.5rem;
+    }
+ 
+  
+  }

@@ -1,0 +1,209 @@
+
+.cards {
+    background-image: url(../../assets/img/background/cardsBG.png);
+    width: 100%;
+    height:auto;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+   
+  }
+  
+  .cards .btn {
+    padding: 28px 54px 28px 54px;
+  
+    box-shadow: 8px 16px 64px 0px rgba(27, 95, 193, 0.32);
+  }
+  
+  .body-cards {
+    border-radius: 8px;
+    box-shadow: 0px 3px 7px 0px rgba(29, 3, 9, 0.2);
+    background-image: url(../../assets/img//background//textureBG.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  
+  .card-tpb .row {
+    display: flex;
+    text-transform: uppercase;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .card-tpb h4 {
+    color: #fff;
+    font-weight: bolder;
+    font-size: 1.2rem;
+  }
+  
+  .card-tpb p {
+    color: #FFFFFF96;
+    font-size: 14px;
+     
+    font-weight: 700;
+  }
+  
+  .card-tpb i {
+    font-size: 42px;
+  
+    background: -moz-linear-gradient(to right, var(--azul-ecsuro), var(--azul-claro));
+    background: -webkit-linear-gradient(to right, var(--azul-ecsuro), var(--azul-claro));
+    background: linear-gradient(to right, var(--azul-ecsuro), var(--azul-claro));
+  
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    line-height: 1;
+  
+  }
+  
+  .body-tpb {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .title-body{
+   text-align: center;  
+   padding-top: 5rem;
+  }
+  
+  .title-body h3{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+  }
+  
+  
+   
+  .game-features-item {
+    margin-top: 2rem;
+    margin-top:3rem;
+    position: relative;
+    box-shadow: 0px 5px 12.09px 0.91px rgba(0, 0, 0, 0.35);
+    border-radius: 3px 3px 0px 0px;
+  }
+   .game-features-thumb img {
+    max-width: 100%;
+    border-radius: 3px 3px 0px 0px;
+   
+  }
+      .container.pt-5{
+        padding-top: 2rem;
+      }
+  
+  .game-features-content {
+    position: absolute;
+    left: 0;
+    bottom:1;
+    background: url(../../assets/img/background/textureBG.jpg) ;
+    background-size: cover;
+    box-shadow: 0px 5px 12.09px 0.91px rgba(0, 0, 0, 0.35);
+    border-radius: 0px 0px 15px 15px;
+    right: 0;
+    padding: 25px 25px 10px 25px;
+  }
+  
+  
+  .game-features-tag  {
+    position: absolute;
+    left: 30px;
+    top: -55px;
+    right: 30px;
+    z-index: 1;
+  }
+  .game-features-tag .btn{
+    padding:1rem;
+  }
+  
+  .game-features-content h3 {
+    font-size: 1rem;
+    color: white;
+    font-weight: 700;
+    margin-bottom: 9px;
+  }
+  
+  .game-features-content > p {
+    font-size: 13px;
+    text-transform: uppercase;
+   
+    font-weight: 700;
+    color: #FFFFFF96;
+  }
+
+  
+
+  /* 
+------------------------responsividade------------------------- */
+ 
+  
+ 
+  
+  @media (max-width:991px) {
+  
+    .body-tpb img{
+        visibility: hidden;
+        display:none;
+      }
+      .body-tpb{
+      text-align: center;
+      }
+ 
+ 
+    .card-tpb{
+      padding-bottom: 2rem;
+    }
+  
+   .linha-cards{
+   
+  justify-content: center;
+   
+  }
+  .cardImg img{
+    padding: 0;}
+  
+    .card-body{
+    margin-bottom:3rem;
+    }
+    .game-features-tag  {
+   
+      top: -62px;
+    
+    }
+    .title-body {
+      
+      padding-top: 3rem;
+    }
+ 
+  
+ 
+   
+  
+  }
+  
+  
+  
+  @media (max-width:575px){
+    .linha-cards {
+      justify-content: center;
+      padding: 1rem;
+    }
+  }
+  
+  
+  
+  @media(max-width:437px) {
+ 
+    .cardImg img{
+      padding: 0;
+      width: 298px;
+  height: 302px;
+    }
+  
+  
+  }
+  
+ 
+  

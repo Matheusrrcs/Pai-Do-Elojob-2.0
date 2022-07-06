@@ -4,6 +4,7 @@ import Contratar from "../componentes/Contratar";
 import Cards from "../componentes/Cards";
 import Divider from "../componentes/Divider";
 import BackgroundVideo from "../componentes/Background";
+import Comentarios from "../componentes/Comentarios";
 
 export const Begin = () => {
     return (
@@ -13,8 +14,9 @@ export const Begin = () => {
             <Divider />
             <Contratar />
             <Cards />
-            <Funcionamento/>
- 
+            <Funcionamento />
+            <Comentarios />
+
         </div>
     )
 }

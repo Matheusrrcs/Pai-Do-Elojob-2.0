@@ -1,4 +1,4 @@
-import { render } from '@testing-library/react';
+ 
 import React, { Component, useEffect } from 'react';
 import "./funcionamento.css"
 
@@ -46,7 +46,7 @@ class Funcionamento extends Component {
 
                 <div className='titulo-principal'>
                     <h3 className="titulo-funcionamento">como isso funciona?</h3>
-                    <p class="subtitulo">PASSOS FÁCEIS PARA COMPRAR</p>
+                    <p class="subtitulo-principal">PASSOS FÁCEIS PARA COMPRAR</p>
                     <Bolas />
                 </div>
 

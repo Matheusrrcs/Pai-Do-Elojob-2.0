@@ -5,8 +5,8 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    padding-top: 10rem;
-
+    padding-top: 14rem;
+    padding-bottom: 5rem;
 }
 
 .titulo-principal {
@@ -38,6 +38,15 @@
 
 .coluna-card {
     transition: all 0.2s ease-in-out;
+    margin-bottom: 4rem;
+}
+
+.subtitulo-principal {
+    color: var(--paragrafo);
+   
+    font-size: 1rem;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
 }
 
 .subtitulo {

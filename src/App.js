@@ -33,10 +33,10 @@ function App() {
 
       </Routes>
 
-      <button class="scroll-top scroll-to-target open" data-target="html" data-aos="fade-down" data-aos-once="false" data-aos-anchor=".conteudo-icone" onClick={() => {
+      <button class="scroll-top scroll-to-target open" data-target="html" data-aos="fade-down" data-aos-once="false" data-aos-anchor=".card-tpb" onClick={() => {
         $('html, body').animate({
           scrollTop: 0
-        }, 1000);;
+        }, 500);
       }}>
         <i class="fas fa-angle-up" ></i>
       </button>

@@ -1,5 +1,4 @@
 import React, { Component, useEffect } from 'react'
-import $ from 'jquery';
 import Braum from "../../assets/img/cards/imagem-braum.png"
 import Botao from "../../componentes/Botao"
 import "./contratar.css"
@@ -81,12 +80,7 @@ function Contratar() {
                 </div>
             </div>
 
-            <button class="scroll-top scroll-to-target open" data-target="html" data-aos="fade-down" data-aos-once="false"  onClick={() => {
-                $('html, body').animate({ scrollTop: 0 }, 1000);
-            }}>
-                <i class="fas fa-angle-up" ></i>
-            </button>
-
+ 
         </div >
     )
 }

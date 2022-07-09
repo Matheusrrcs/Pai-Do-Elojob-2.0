@@ -101,7 +101,7 @@ function Cards() {
                 </div>
             </div>
 
-            <div className='container '  data-aos="fade-up">
+            <div className='container ' data-aos="fade-up">
                 <div class="row justify-content-center">
                     <CardImg caminho={Ashe} alt="imagem da Ashe" title="ELOBOOST" text="LEAGUE OF LEGENDS" />
                     <CardImg caminho={Shen} alt="imagem do Shen" title="DUOBOOST" text="LEAGUE OF LEGENDS" />

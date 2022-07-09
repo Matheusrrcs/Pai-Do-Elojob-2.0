@@ -1,6 +1,7 @@
 
 import React, { Component, useEffect } from 'react';
 import "./comentarios.css"
+
 import sylas from "../../assets/img/cards/comentario-sylas.png"
 import corvo from "../../assets/img/cards/comentario-corvo.png"
 import raiva from "../../assets/img/cards/comentario-raiva.png"

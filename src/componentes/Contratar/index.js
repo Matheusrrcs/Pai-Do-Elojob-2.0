@@ -45,12 +45,6 @@ function Contratar() {
     return (
         <div className="Section-Contratar">
 
-            <button class="scroll-top scroll-to-target open" data-target="html" data-aos="fade-down" data-aos-once="false"  onClick={() => {
-                $('html, body').animate({ scrollTop: 0 }, 1000);
-            }}>
-                <i class="fas fa-angle-up" ></i>
-            </button>
-
             <div className="container" data-aos="fade-right">
 
                 <div className="row" id="linha-contratar">
@@ -86,6 +80,12 @@ function Contratar() {
 
                 </div>
             </div>
+
+            <button class="scroll-top scroll-to-target open" data-target="html" data-aos="fade-down" data-aos-once="false"  onClick={() => {
+                $('html, body').animate({ scrollTop: 0 }, 1000);
+            }}>
+                <i class="fas fa-angle-up" ></i>
+            </button>
 
         </div >
     )

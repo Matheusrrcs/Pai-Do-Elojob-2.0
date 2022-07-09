@@ -7,7 +7,7 @@ class Bolas extends Component {
 
     render() {
         return (
-            <div className='row d-flex justify-content-center'>
+            <div className='row d-flex justify-content-center  ml-4 mr-4'>
                 <span className='bola  '></span>
                 <span className='bola  '></span>
                 <span className='bola  '></span>

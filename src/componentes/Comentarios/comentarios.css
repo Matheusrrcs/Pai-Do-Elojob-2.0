@@ -55,20 +55,28 @@
     display: flex;
     align-items: center;
     justify-content: center;
+
 }
 
 .carousel-item.active {
     display: flex;
     justify-content: center;
+    transition: all 0.5s ease-in-out;
+}
+
+.carousel-inner {
+    width: 66.66%;
+
 }
 
 .row.comentario-body {
-    width: 66.66%;
+    width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: center;
     padding-bottom: 5rem;
     padding-top: 2rem;
+
 }
 
 .contet-comentario {
@@ -88,6 +96,14 @@
 
 .card-img img {
     border-radius: 16px;
+
+
+}
+
+.img-fluid {
+
+    max-width: 300px;
+    height: 386px;
 }
 
 .subtitulo-comentario {
@@ -95,7 +111,7 @@
     font-size: 1rem;
     font-weight: bolder;
     text-transform: uppercase;
-    padding-bottom: 1rem    ;
+    padding-bottom: 1rem;
     text-align: left;
 }
 
@@ -125,4 +141,52 @@
     display: flex;
     align-items: center;
 }
- 
+
+.carousel-indicators li{
+    border-radius:50% ;
+    height: 12px;
+    width: 12px;
+    background-color: var(--azul-ecsuro);
+}
+.carousel-control-next span,.carousel-control-prev span{
+  color: var(--azul-ecsuro);
+}
+
+
+@media (max-width:991px) {
+
+
+    .card-img {
+       
+        padding-bottom: 0;
+       
+    }
+
+    .contet-comentario {
+        margin: 0;
+        border-radius: 0 0 16px 16px;
+    }
+
+    .card-img img {
+        border-radius: 16px 16px 0 0;
+        width:100% ;
+    }
+    .img-fluid{
+    
+        max-width:100% ;
+        height:auto;
+}
+
+.corpo-star,.corpo-emoji{
+ width: auto !important;
+}
+
+.linha-emojis {
+    height: auto;
+  
+  }
+  .corpo-bottom{
+    display: flex;
+    justify-content: space-between;
+  }
+}

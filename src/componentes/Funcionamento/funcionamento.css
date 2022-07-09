@@ -43,7 +43,7 @@
 
 .subtitulo-principal {
     color: var(--paragrafo);
-   
+
     font-size: 1rem;
     margin-bottom: 2rem;
     text-transform: uppercase;
@@ -145,5 +145,17 @@
 .coluna-card:hover .subtitulo {
 
     transform: translateY(-20px);
+
+}
+
+
+
+@media (max-width: 575px) {
+
+    .subtitulo-corpo::after {
+       
+        margin:0 1rem 0 1rem;
+ 
+    }
 
 }

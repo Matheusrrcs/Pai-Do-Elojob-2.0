@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import imagem from '../../assets/img/logo/logo.png'
 import Botao from '../Botao/'
 import "../Navbar/navbar.css"
+import $ from 'jquery';
 
 // logo do navbar
 class NavbarLogo extends Component {
@@ -102,24 +103,66 @@ class NavbarMenu extends React.Component {
 
 class Navbar extends Component {
 
-  
+  constructor(props) {
+    super(props);
+    this.state = {
+      navbar: "",
+      btn: ""
+    }
 
+    this.ativarAnimacao = this.ativarAnimacao.bind(this)
+  }
+
+
+
+  ativarAnimacao() {
+
+    let anime = this.state;
+
+    if ($(window.document).scrollTop() > 450) {
+     
+      anime.navbar = "scroll"
+      anime.btn = "open"
+      this.setState({ anime })
+    }
+    else {
+      anime.navbar = ""
+      anime.btn = ""
+      this.setState({ anime })
+    }
+
+  }
+
+
+  componentDidMount() {
+    window.addEventListener('scroll', () => { this.ativarAnimacao() });
+
+  }
 
   render() {
     return (
-      
 
-        <nav className="navbar navbar-expand-lg fixed-top  navbar-round " id="navbar">
-          <div className="container">
-            <NavbarLogo logoUrl={imagem} alt="Imagem da logo" />
 
-            <NavbarToggler />
+      <nav className={`navbar navbar-expand-lg fixed-top  navbar-round ${this.state.navbar}`} id="navbar"
 
-            <NavbarMenu />
-          </div>
-        </nav>
+      >
+        <div className="container">
+          <NavbarLogo logoUrl={imagem} alt="Imagem da logo" />
 
-     
+          <NavbarToggler />
+
+          <NavbarMenu />
+        </div>
+        <button class={`scroll-top scroll-to-target ${this.state.btn}`} onClick={() => {
+          $('html, body').animate({
+            scrollTop: 0
+          }, 500);
+        }}>
+          <i class="fas fa-angle-up" ></i>
+        </button>
+      </nav>
+
+
 
     )
   }

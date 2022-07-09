@@ -2,215 +2,246 @@
   --azul-ecsuro: #379CCF;
   --azul-claro: #6FC5DA;
 }
-  .navbar {
-    text-transform: uppercase;
-  
-  }
-  
-  .navbar.scrolled {
-    background-color: #000000bb;
-  }
-  
-  
-  .nav-item .nav-link {
-    color: white;
-    font-size: 0.95rem;
-    margin-left: 1rem;
-    margin-right: 0.5rem;
-    cursor: pointer;
-  
-  }
-  
-  .nav-item {
-    position: relative;
-  }
-  
-  .nav-item::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 37%;
-    height: 40px;
-    width: 83%;
-    transform: translateY(-50%) skewX(-17deg);
-    background: linear-gradient(to right, var(--azul-ecsuro), var(--azul-claro));
-    z-index: -1;
-    right: 0;
-    margin: 0 auto;
-    opacity: 0;
-    transition: .3s linear;
-  }
-  
-  .nav-item.active::before {
-    opacity: 1;
-  }
-  
-  .nav-item:hover::before {
-    opacity: 1;
-  }
-  
-  
-  .navbar-toggler-icon {
-    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
-  }
-  
+
+.navbar {
+  text-transform: uppercase;
+  transition: 0.5s ease-in-out;
+}
+
+.navbar.scroll {
+  background-color: #12161bbd;
+  backdrop-filter: blur(5px);
+ 
+  box-shadow: 1px 1px 6px rgb(0, 0, 0);
+}
+
+
+.nav-item .nav-link {
+  color: white;
+  font-size: 0.95rem;
+  margin-left: 1rem;
+  margin-right: 0.5rem;
+  cursor: pointer;
+
+}
+
+.nav-item {
+  position: relative;
+}
+
+.nav-item::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 37%;
+  height: 40px;
+  width: 83%;
+  transform: translateY(-50%) skewX(-17deg);
+  background: linear-gradient(to right, var(--azul-ecsuro), var(--azul-claro));
+  z-index: -1;
+  right: 0;
+  margin: 0 auto;
+  opacity: 0;
+  transition: .3s linear;
+}
+
+.nav-item.active::before {
+  opacity: 1;
+}
+
+.nav-item:hover::before {
+  opacity: 1;
+}
+
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+
+.navbar-brand {
+  background: url(../../assets/img/logo/logo.png);
+  background-size: cover;
+  background-position: top;
+  width: 100px;
+  height: 100px;
+  padding-top: 0 !important;
+}
+
+/* 
+    ------------------------navbar togle------------------------- */
+.menu {
+  background: linear-gradient(to right, var(--azul-ecsuro), var(--azul-claro));
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  position: fixed;
+  top: 25px;
+  right: 25px;
+  cursor: pointer;
+}
+
+
+.hamburguer {
+  position: relative;
+  display: block;
+  background: rgb(255, 255, 255);
+  width: 30px;
+  height: 3px;
+  top: 30px;
+  left: 15px;
+  transition: 0.5s ease-in-out;
+}
+
+.hamburguer:before,
+.hamburguer:after {
+  background: rgb(255, 255, 255);
+  content: '';
+  display: block;
+  width: 100%;
+
+  height: 100%;
+  position: absolute;
+  transition: 0.5s ease-in-out;
+}
+
+.hamburguer:before {
+  top: -10px;
+
+}
+
+.hamburguer:after {
+  bottom: -10px;
+}
+
+input {
+  display: none;
+}
+
+input:checked~label .hamburguer {
+  transform: rotate(45deg);
+}
+
+input:checked~label .hamburguer:before {
+  transform: rotate(90deg);
+  top: 0;
+}
+
+input:checked~label .hamburguer:after {
+  transform: rotate(90deg);
+  bottom: 0;
+}
+
+/* 
+    ------------------------menu dropwdown-------------------------- */
+.dropdown-item {
+  padding: 1.5rem 2rem 1.5rem 1rem;
+  font-size: 0.95rem;
+
+}
+
+
+
+.dropdown-menu.animated.fadeIn {
+  margin: 0;
+}
+
+.dropright .dropdown-toggle::after {
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.imgface img {
+  float: left;
+  padding: 5px;
+  margin: 0 10px 10px 0;
+  width: 38px;
+  filter: brightness(10%);
+}
+
+
+.styled-menu {
+  z-index: 100;
+  margin: 0;
+  padding: .1rem;
+  border: 0;
+}
+
+.styled-menu::before {
+  position: absolute;
+  z-index: -5;
+  bottom: 100%;
+  left: 20px;
+  display: block;
+  width: 16px;
+  height: 16px;
+  content: '';
+  transform: rotate(-45deg) translateY(1rem);
+  border-radius: .2rem;
+  background: #fff;
+  box-shadow: none;
+}
+
+
+.scroll-top {
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  position: fixed;
+  bottom: 105%;
+  right: 50px;
+  font-size: 16px;
+  border-radius: 5px;
+  z-index: 99;
+  color: #fff;
+  text-align: center;
+  cursor: pointer;
+  background: linear-gradient(to right, var(--azul-ecsuro), var(--azul-claro));
+  transition: 1s ease;
+  opacity: 0;
+  border: none;
+ 
+
+}
+
+.scroll-top.open {
+  bottom: 30px;
+  opacity: 1;
+}
+
+@media (max-width:991px) {
+
+
+
   .navbar-brand {
-    background: url(../../assets/img/logo/logo.png);
+    background: url(../../assets/img/logo/logoCelular.png);
     background-size: cover;
     background-position: top;
-    width: 100px;
-    height: 100px;
+    width: 80px;
+    height: 80px;
     padding-top: 0 !important;
   }
-  
-  /* 
-    ------------------------navbar togle------------------------- */
-  .menu {
-    background: linear-gradient(to right, var(--azul-ecsuro), var(--azul-claro));
-    border-radius: 50%;
-    width: 60px;
-    height: 60px;
-    position: fixed;
-    top: 25px;
-    right: 25px;
-    cursor: pointer;
-  }
-  
-  
-  .hamburguer {
-    position: relative;
-    display: block;
-    background: rgb(255, 255, 255);
-    width: 30px;
-    height: 3px;
-    top: 30px;
-    left: 15px;
-    transition: 0.5s ease-in-out;
-  }
-  
-  .hamburguer:before,
-  .hamburguer:after {
-    background: rgb(255, 255, 255);
-    content: '';
-    display: block;
-    width: 100%;
-  
-    height: 100%;
-    position: absolute;
-    transition: 0.5s ease-in-out;
-  }
-  
-  .hamburguer:before {
-    top: -10px;
-  
-  }
-  
-  .hamburguer:after {
-    bottom: -10px;
-  }
-  
-  input {
-    display: none;
-  }
-  
-  input:checked~label .hamburguer {
-    transform: rotate(45deg);
-  }
-  
-  input:checked~label .hamburguer:before {
-    transform: rotate(90deg);
-    top: 0;
-  }
-  
-  input:checked~label .hamburguer:after {
-    transform: rotate(90deg);
-    bottom: 0;
-  }
-  
-  /* 
-    ------------------------menu dropwdown-------------------------- */
-  .dropdown-item {
-    padding: 1.5rem 2rem 1.5rem 1rem;
-    font-size: 0.95rem;
-  
-  }
-  
-  
-  
-  .dropdown-menu.animated.fadeIn {
-    margin: 0;
-  }
-  
-  .dropright .dropdown-toggle::after {
-    margin-left: 1rem;
-    margin-right: 1rem;
-  }
-  
-  .imgface img {
-    float: left;
-    padding: 5px;
-    margin: 0 10px 10px 0;
-    width: 38px;
-    filter: brightness(10%);
-  }
-  
-  
-  .styled-menu {
-    z-index: 100;
-    margin: 0;
-    padding: .1rem;
-    border: 0;
-  }
-  
-  .styled-menu::before {
-    position: absolute;
-    z-index: -5;
-    bottom: 100%;
-    left: 20px;
-    display: block;
-    width: 16px;
-    height: 16px;
-    content: '';
-    transform: rotate(-45deg) translateY(1rem);
-    border-radius: .2rem;
-    background: #fff;
-    box-shadow: none;
-  }
- 
-  @media (max-width:991px) {
 
- 
-  
-    .navbar-brand {
-      background: url(../../assets/img/logo/logoCelular.png);
-      background-size: cover;
-      background-position: top;
-      width: 80px;
-      height: 80px;
-      padding-top: 0 !important;
-    }
-  
-    .nav-item .nav-link.btn {
-      margin-left: 0;
-      padding-right: 1rem;
-      margin-bottom: 1rem;
-    }
-  
-    .btn {
-      margin-bottom: 1rem;
-      margin-top: 0.5rem;
-    }
-  
-    .styled-menu::before {
-      visibility: hidden;
-    }
-  
-   
+  .nav-item .nav-link.btn {
+    margin-left: 0;
+    padding-right: 1rem;
+    margin-bottom: 1rem;
   }
-  
-  @media(max-width:360px) {
-    .dropdown small {
-      font-size: 0.6rem;
-    }
-   
+
+  .btn {
+    margin-bottom: 1rem;
+    margin-top: 0.5rem;
   }
+
+  .styled-menu::before {
+    visibility: hidden;
+  }
+
+
+}
+
+@media(max-width:360px) {
+  .dropdown small {
+    font-size: 0.6rem;
+  }
+
+}

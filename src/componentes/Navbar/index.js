@@ -19,14 +19,13 @@ class NavbarToggler extends Component {
   render() {
     return (
       <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" id="navbar-toggler">
-        <input id="menu-hamburguer" type="checkbox" />
-
-        <label for="menu-hamburguer">
-          <div className="menu">
-            <span className="hamburguer"></span>
-          </div>
-        </label>
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" id="navbar-toggler"
+        onClick={this.props.menurTogggle} >
+        <div id="nav-icon1" className={this.props.menu} >
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
       </button>
 
     )
@@ -107,10 +106,11 @@ class Navbar extends Component {
     super(props);
     this.state = {
       navbar: "",
-      btn: ""
+      menu: ""
     }
 
-    this.ativarAnimacao = this.ativarAnimacao.bind(this)
+    this.ativarAnimacao = this.ativarAnimacao.bind(this);
+    this.menurTogggle = this.menurTogggle.bind(this);
   }
 
 
@@ -120,19 +120,47 @@ class Navbar extends Component {
     let anime = this.state;
 
     if ($(window.document).scrollTop() > 450) {
-     
+
       anime.navbar = "scroll"
-      anime.btn = "open"
-      this.setState({ anime })
+
+
     }
     else {
       anime.navbar = ""
-      anime.btn = ""
-      this.setState({ anime })
-    }
 
+
+    }
+    this.setState({ anime })
   }
 
+  menurTogggle() {
+    let anime = this.state;
+
+    if (this.state.menu === "") {
+      anime.menu = "open"
+
+      if (this.state.navbar === "") {
+        anime.navbar = "scroll"
+      }
+
+
+    }
+    else {
+      anime.menu = ""
+
+      if ($(window.document).scrollTop() < 450) {
+
+        anime.navbar = ""
+
+      }
+      else {
+        anime.navbar = "scroll"
+      }
+
+
+    }
+    this.setState({ anime })
+  }
 
   componentDidMount() {
     window.addEventListener('scroll', () => { this.ativarAnimacao() });
@@ -149,11 +177,11 @@ class Navbar extends Component {
         <div className="container">
           <NavbarLogo logoUrl={imagem} alt="Imagem da logo" />
 
-          <NavbarToggler />
+          <NavbarToggler menu={this.state.menu} menurTogggle={this.menurTogggle} />
 
           <NavbarMenu />
         </div>
-    
+
       </nav>
 
 

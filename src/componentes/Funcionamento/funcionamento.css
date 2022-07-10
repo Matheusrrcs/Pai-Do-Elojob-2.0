@@ -147,7 +147,32 @@
     transform: translateY(-20px);
 
 }
-
+.scroll-top {
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    position: fixed;
+    bottom: 105%;
+    right: 50px;
+    font-size: 16px;
+    border-radius: 5px;
+    z-index: 99;
+    color: #fff;
+    text-align: center;
+    cursor: pointer;
+    background: linear-gradient(to right, var(--azul-ecsuro), var(--azul-claro));
+    transition: 1s ease;
+    opacity: 0;
+    border: none;
+  
+  
+  }
+  
+  .scroll-top.open {
+    bottom: 30px;
+    opacity: 1;
+  }
+  
 
 
 @media (max-width: 575px) {

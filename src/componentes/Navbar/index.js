@@ -153,13 +153,7 @@ class Navbar extends Component {
 
           <NavbarMenu />
         </div>
-        <button class={`scroll-top scroll-to-target ${this.state.btn}`} onClick={() => {
-          $('html, body').animate({
-            scrollTop: 0
-          }, 500);
-        }}>
-          <i class="fas fa-angle-up" ></i>
-        </button>
+    
       </nav>
 
 

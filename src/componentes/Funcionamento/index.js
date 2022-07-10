@@ -1,6 +1,7 @@
- 
+
 import React, { Component, useEffect } from 'react';
 import "./funcionamento.css"
+import $ from 'jquery';
 
 
 class Bolas extends Component {
@@ -40,6 +41,43 @@ class Card extends Component {
 
 
 class Funcionamento extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            btn: ""
+        }
+
+        this.ativarAnimacao = this.ativarAnimacao.bind(this)
+    }
+
+
+
+    ativarAnimacao() {
+
+        let anime = this.state;
+
+        if ($(window.document).scrollTop() > 450) {
+
+
+            anime.btn = "open"
+            this.setState({ anime })
+        }
+        else {
+
+            anime.btn = ""
+            this.setState({ anime })
+        }
+
+    }
+
+
+
+
+    componentDidMount() {
+        window.addEventListener('scroll', () => { this.ativarAnimacao() });
+
+    }
     render() {
         return (
             <div className='funcionamento-corpo'>
@@ -60,7 +98,13 @@ class Funcionamento extends Component {
 
                 </div>
 
-
+                <button class={`scroll-top scroll-to-target ${this.state.btn}`} onClick={() => {
+                    $('html, body').animate({
+                        scrollTop: 0
+                    }, 500);
+                }}>
+                    <i class="fas fa-angle-up" ></i>
+                </button>
             </div>
         )
     }

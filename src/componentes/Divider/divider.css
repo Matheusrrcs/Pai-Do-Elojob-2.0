@@ -1,22 +1,22 @@
-
 .bottom {
-    position: absolute;
-    bottom: 0rem;
-    left: 0;
-    right: 0;
-    border-top: none;
-    transform: rotate(180deg);
-    z-index: -1;
-  }
-  
-  .bottom img {
-  
-    max-width: 100%;
-  }
+  position: absolute;
+  bottom: 0rem;
+  left: 0;
+  right: 0;
+  border-top: none;
+  transform: rotate(180deg);
+  z-index: -1;
+}
 
-  
+.bottom img {
+
+  max-width: 100%;
+}
+
+
+
 @media(max-width:1024px) {
-    .bottom {
-        z-index: 0;
-      }
+  .bottom {
+    z-index: 0;
+  }
 }

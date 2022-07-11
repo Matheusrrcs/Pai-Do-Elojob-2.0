@@ -1,10 +1,8 @@
 .funcionamento-corpo {
-    background-image: url(../../assets/img/background/funcionamentoBG.png);
     width: 100%;
+    max-width: 100%;
     height: auto;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
+    position: relative;
     padding-top: 14rem;
     padding-bottom: 5rem;
 }
@@ -147,6 +145,7 @@
     transform: translateY(-20px);
 
 }
+
 .scroll-top {
     width: 50px;
     height: 50px;
@@ -156,7 +155,7 @@
     right: 50px;
     font-size: 16px;
     border-radius: 5px;
-    z-index: 99;
+    z-index: 9999;
     color: #fff;
     text-align: center;
     cursor: pointer;
@@ -164,23 +163,23 @@
     transition: 1s ease;
     opacity: 0;
     border: none;
-  
-  
-  }
-  
-  .scroll-top.open {
+
+
+}
+
+.scroll-top.open {
     bottom: 30px;
     opacity: 1;
-  }
-  
+}
+
 
 
 @media (max-width: 575px) {
 
     .subtitulo-corpo::after {
-       
-        margin:0 1rem 0 1rem;
- 
+
+        margin: 0 1rem 0 1rem;
+
     }
 
 }

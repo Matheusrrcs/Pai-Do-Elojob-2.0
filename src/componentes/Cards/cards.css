@@ -1,11 +1,9 @@
 
 .cards {
-    background-image: url(../../assets/img/background/cardsBG.png);
+    max-width: 100%;
     width: 100%;
     height:auto;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
+   position: relative;
    
   }
   

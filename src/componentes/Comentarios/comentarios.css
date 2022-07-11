@@ -1,10 +1,8 @@
 .comentarios-corpo {
-    background-image: url(../../assets/img/background/comentariosBGK.png);
     width: 100%;
+    max-width: 100%;
     height: auto;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
+    position: relative;
     padding-bottom: 5rem;
 }
 
@@ -100,7 +98,7 @@
 
 }
 
-.img-fluid {
+.card-img .img-fluid {
 
     max-width: 300px;
     height: 386px;
@@ -142,14 +140,16 @@
     align-items: center;
 }
 
-.carousel-indicators li{
-    border-radius:50% ;
+.carousel-indicators li {
+    border-radius: 50%;
     height: 12px;
     width: 12px;
     background-color: var(--azul-ecsuro);
 }
-.carousel-control-next span,.carousel-control-prev span{
-  color: var(--azul-ecsuro);
+
+.carousel-control-next span,
+.carousel-control-prev span {
+    color: var(--azul-ecsuro);
 }
 
 
@@ -157,9 +157,9 @@
 
 
     .card-img {
-       
+
         padding-bottom: 0;
-       
+
     }
 
     .contet-comentario {
@@ -169,24 +169,27 @@
 
     .card-img img {
         border-radius: 16px 16px 0 0;
-        width:100% ;
+        width: 100%;
     }
-    .img-fluid{
-    
-        max-width:100% ;
-        height:auto;
-}
 
-.corpo-star,.corpo-emoji{
- width: auto !important;
-}
+    .img-fluid {
 
-.linha-emojis {
-    height: auto;
-  
-  }
-  .corpo-bottom{
-    display: flex;
-    justify-content: space-between;
-  }
+        max-width: 100%;
+        height: auto;
+    }
+
+    .corpo-star,
+    .corpo-emoji {
+        width: auto !important;
+    }
+
+    .linha-emojis {
+        height: auto;
+
+    }
+
+    .corpo-bottom {
+        display: flex;
+        justify-content: space-between;
+    }
 }

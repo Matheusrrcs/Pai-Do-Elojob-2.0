@@ -32,3 +32,27 @@ body {
     width: 100%;
     height: 100%;
 }
+
+
+.bgkLeft {
+    position: absolute;
+    z-index: -99;
+    bottom: -165px;
+    left: 0;
+    
+
+}
+
+.bgkRight {
+    position: absolute;
+    z-index: -99;
+    bottom: -165px;
+    right: 0;
+     
+}
+
+@media (max-width:992px) {
+    .bgkRight, .bgkLeft {
+        display: none;
+    }
+}

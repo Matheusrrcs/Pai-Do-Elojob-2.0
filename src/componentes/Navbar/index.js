@@ -119,7 +119,7 @@ class Navbar extends Component {
 
     let anime = this.state;
 
-    if ($(window.document).scrollTop() > 450) {
+    if ($(window.document).scrollTop() >50) {
 
       anime.navbar = "scroll"
 
@@ -148,7 +148,7 @@ class Navbar extends Component {
     else {
       anime.menu = ""
 
-      if ($(window.document).scrollTop() < 450) {
+      if ($(window.document).scrollTop() < 50) {
 
         anime.navbar = ""
 

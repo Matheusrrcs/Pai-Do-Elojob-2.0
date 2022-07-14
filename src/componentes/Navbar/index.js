@@ -20,13 +20,17 @@ class NavbarToggler extends Component {
     return (
       <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" id="navbar-toggler"
-        onClick={this.props.menurTogggle} >
-        <div id="nav-icon1" className={this.props.menu} >
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-      </button>
+        onClick={this.props.init} >
+        <span class="menu-trigger">
+          <i class={`menu-trigger-bar top ${this.props.anime}`}></i>
+          <i class={`menu-trigger-bar middle ${this.props.anime}`}></i>
+          <i class={`menu-trigger-bar  bottom ${this.props.anime}`}></i>
+        </span>
+        <span class="close-trigger">
+          <i class={`close-trigger-bar left ${this.props.anime}`}></i>
+          <i class={`close-trigger-bar right ${this.props.anime}`}></i>
+        </span>
+      </button >
 
     )
   }
@@ -106,11 +110,15 @@ class Navbar extends Component {
     super(props);
     this.state = {
       navbar: "",
-      menu: ""
+      menu: "",
+      anim: "",
+      nav: ""
     }
 
     this.ativarAnimacao = this.ativarAnimacao.bind(this);
     this.menurTogggle = this.menurTogggle.bind(this);
+    this.navActive = this.navActive.bind(this);
+    this.init = this.init.bind(this);
   }
 
 
@@ -119,7 +127,7 @@ class Navbar extends Component {
 
     let anime = this.state;
 
-    if ($(window.document).scrollTop() >50) {
+    if ($(window.document).scrollTop() > 50) {
 
       anime.navbar = "scroll"
 
@@ -159,7 +167,30 @@ class Navbar extends Component {
 
 
     }
+
+
     this.setState({ anime })
+  }
+
+  navActive() {
+    let anime = this.state;
+
+    if (this.state.anim === "") {
+
+      anime.anim = "active"
+      anime.nav = "open"
+    }
+    else {
+      anime.anim = ""
+      anime.nav = ""
+    }
+
+
+  }
+
+  init() {
+    this.menurTogggle();
+    this.navActive();
   }
 
   componentDidMount() {
@@ -171,15 +202,20 @@ class Navbar extends Component {
     return (
 
 
-      <nav className={`navbar navbar-expand-lg fixed-top  navbar-round ${this.state.navbar}`} id="navbar"
+      <nav className={`navbar navbar-expand-lg fixed-top  navbar-round ${this.state.navbar} ${this.state.nav}`} id="navbar"
 
       >
         <div className="container">
           <NavbarLogo logoUrl={imagem} alt="Imagem da logo" />
 
-          <NavbarToggler menu={this.state.menu} menurTogggle={this.menurTogggle} />
+          <NavbarToggler menu={this.state.menu} init={this.init} anime={this.state.anim} />
 
           <NavbarMenu />
+        </div>
+        <div className='bgknavbar'>
+          <i class="menu-bg top"  ></i>
+          <i class="menu-bg middle" ></i>
+          <i class="menu-bg bottom"  ></i>
         </div>
 
       </nav>

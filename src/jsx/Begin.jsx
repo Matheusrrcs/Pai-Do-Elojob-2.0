@@ -5,7 +5,8 @@ import Cards from "../componentes/Cards";
 import Divider from "../componentes/Divider";
 import BackgroundVideo from "../componentes/Background";
 import Comentarios from "../componentes/Comentarios";
-
+import Perguntas from "../componentes/Perguntas";
+import Footer from "../componentes/footer"
 export const Begin = () => {
     return (
         <div className='bg_main'>
@@ -16,7 +17,8 @@ export const Begin = () => {
             <Cards />
             <Funcionamento />
             <Comentarios />
-
+            <Perguntas />
+            <Footer />
         </div>
     )
 }

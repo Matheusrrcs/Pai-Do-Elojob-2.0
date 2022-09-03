@@ -15,7 +15,7 @@ function App() {
 
 
   useEffect(() => {
-    Aos.init({ duration: 2000, disable:"mobile", once: true })
+    Aos.init({ duration: 2000, disable: "mobile", once: true })
   }, [])
 
 
@@ -32,7 +32,7 @@ function App() {
 
       </Routes>
 
-      
+    
 
     </div>
 

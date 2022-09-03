@@ -3,7 +3,7 @@
     max-width: 100%;
     height: auto;
     position: relative;
-    padding-bottom: 5rem;
+    padding-bottom: 3rem;
 }
 
 
@@ -12,6 +12,32 @@
     font-weight: bolder;
     font-size: 1.5rem;
 }
+
+.react-3d-carousel .slider-container .slider-right div,
+.react-3d-carousel .slider-container .slider-left div {
+    border: none !important;
+}
+
+.react-3d-carousel {
+    height: 538px !important;
+}
+
+.slider-single-content {
+    border: none !important;
+    box-shadow: none !important;
+
+}
+
+.react-3d-carousel .slider-container .slider-content .slider-single.active {
+
+    filter: none;
+}
+
+.react-3d-carousel .slider-container .slider-content .slider-single {
+
+    filter: blur(3px);
+}
+
 
 
 
@@ -77,11 +103,22 @@
 
 }
 
+.slider-left,
+.slider-right {
+    font-size: 25px;
+}
+
+.slider-left i:hover,
+.slider-right i:hover {
+    color: #55b2d5;
+}
+
 .contet-comentario {
-    margin: 30px 0px 0px -80px;
+    margin: 30px 0px 0px -160px;
     background-color: #282C33;
     border-radius: 16px 16px 16px 0px;
     padding: 2rem;
+    box-shadow: 2px 1px 15px 2px rgba(0, 0, 0, 0.164);
 
 }
 
@@ -94,14 +131,14 @@
 
 .card-img img {
     border-radius: 16px;
-
+    box-shadow: 2px 1px 15px 2px rgba(0, 0, 0, 0.295);
 
 }
 
 .card-img .img-fluid {
 
     max-width: 300px;
-    height: 386px;
+
 }
 
 .subtitulo-comentario {
@@ -126,6 +163,7 @@
 .linha-emojis {
     height: 50%;
     display: flex;
+    width: 100%;
     flex-direction: row;
     align-items: end;
 }
@@ -133,6 +171,11 @@
 .emoji-star {
     font-size: 50px;
     color: var(--paragrafo);
+}
+
+.corpo-card-comentario {
+    display: flex;
+    justify-content: end;
 }
 
 .corpo-star {
@@ -192,4 +235,13 @@
         display: flex;
         justify-content: space-between;
     }
+}
+
+@media (max-width: 1199px) and (min-width:992px) {
+
+    .contet-comentario {
+        margin: 30px 0px 0px -130px;
+
+    }
+
 }

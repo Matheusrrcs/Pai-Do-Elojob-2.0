@@ -1,0 +1,151 @@
+.titulo-perguntas h3 {
+    color: #FFFFFF;
+    font-weight: bolder;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+}
+
+.perguntasFaq {
+    position: relative;
+    padding-top: 7rem;
+}
+
+.titulo-perguntas {
+
+    text-align: center;
+}
+
+.titulo-perguntas .divider {
+    position: relative;
+}
+
+.titulo-perguntas .divider::before {
+    content: "";
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    top: 90px;
+    border-radius: 50%;
+    left: 48.5%;
+    z-index: 2;
+    background-image: linear-gradient(to right, #379CCF 0%, #6FC5DA 100%);
+}
+
+.cont-perguntas {
+    margin-top: 70px;
+}
+
+.pergunta-body .subtitulo {
+    margin-bottom: 0;
+}
+
+.pergunta-body {
+    cursor: pointer;
+    background-color: #252930;
+    width: 350px;
+    height: 100px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+}
+
+
+.pergunta-body.active {
+    margin-bottom: 180px;
+    border-radius: 15px 15px 0 0;
+
+}
+
+.pergunta-body .head {
+    display: flex;
+    align-items: center;
+    align-content: center;
+}
+
+.card-header {
+    display: flex;
+}
+
+.faq {
+    margin-bottom: 30px;
+}
+
+.pergunta-body .icone-pergunta,
+.pergunta-body .icone-pergunta-minus {
+    color: #a6a8ab;
+    font-size: 25px;
+    margin-left: 10px;
+
+}
+
+.pergunta-body .icone-pergunta-minus,
+.pergunta-body.collapsed .icone-pergunta {
+    display: none;
+}
+
+.direita .faq {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 0 30px 50px;
+}
+
+.esquerda .faq {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 0 30px -50px;
+}
+
+.direita,
+.esquerda {
+    padding-top: 50px;
+}
+
+.card-faq::before {
+    content: "";
+    display: block !important;
+    position: absolute;
+    width: 2px;
+    height: 95%;
+    right: 0;
+    top: 0;
+    z-index: 1;
+
+    background-image: linear-gradient(to right, #379CCF 0%, #6FC5DA 100%);
+
+}
+
+.resposta-body {
+
+    background-color: #12161B;
+    width: 350px;
+
+
+}
+
+@media(max-width:991px) {
+    .titulo-perguntas {
+        padding-top: 290px;
+    }
+
+    .card-faq::before,
+    .titulo-perguntas .divider::before {
+        display: none !important;
+    }
+
+    .direita {
+        padding-top: 0;
+    }
+
+    .direita .faq,
+    .esquerda .faq {
+        margin: 0 0 30px 0;
+    }
+
+    .esquerda {
+        padding-top: 0;
+    }
+}

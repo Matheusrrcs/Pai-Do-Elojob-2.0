@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/Pai-Do-Elojob-2.0/static/css/main.9f6aca04.css",
-    "main.js": "/Pai-Do-Elojob-2.0/static/js/main.bb328a79.js",
+    "main.js": "/Pai-Do-Elojob-2.0/static/js/main.4265c6cb.js",
     "static/media/braum.webm": "/Pai-Do-Elojob-2.0/static/media/braum.ee1559115a330d181dd4.webm",
     "static/media/braum_bgk_still.jpg": "/Pai-Do-Elojob-2.0/static/media/braum_bgk_still.6344030c60567b90606a.jpg",
     "static/media/Nelson Engraved.otf": "/Pai-Do-Elojob-2.0/static/media/Nelson Engraved.18516a572af95fb4589b.otf",
@@ -23,10 +23,10 @@
     "static/media/waves.svg": "/Pai-Do-Elojob-2.0/static/media/waves.dec6ede18693da4349c281dd50d84728.svg",
     "static/media/valorant.svg": "/Pai-Do-Elojob-2.0/static/media/valorant.d2b5f357ca190f11c132be8ae76d896b.svg",
     "main.9f6aca04.css.map": "/Pai-Do-Elojob-2.0/static/css/main.9f6aca04.css.map",
-    "main.bb328a79.js.map": "/Pai-Do-Elojob-2.0/static/js/main.bb328a79.js.map"
+    "main.4265c6cb.js.map": "/Pai-Do-Elojob-2.0/static/js/main.4265c6cb.js.map"
   },
   "entrypoints": [
     "static/css/main.9f6aca04.css",
-    "static/js/main.bb328a79.js"
+    "static/js/main.4265c6cb.js"
   ]
 }

@@ -109,14 +109,14 @@ class Footer extends Component {
                             </div>
                         </div>
 
-                     
+
                     </div>
-                    <div className="row pt-4 last-footer">
+                    <div className="pt-4 last-footer">
                         <div className="container">
-                            
+
                             <div className="direitos">
                                 <p className='paragrafo'>
-                                <span className='color'>©</span> PAI DO ELOJOB <span className='color'> 2022 todos os direitos reservador</span>
+                                    <span className='color'>©</span> PAI DO ELOJOB <span className='color'> 2022 todos os direitos reservador</span>
                                 </p>
                             </div>
                             <div className="info">
@@ -126,10 +126,10 @@ class Footer extends Component {
                                     League of Legends é uma marca registrada da Riot Games, Inc. Nós não somos de nenhuma forma afiliados, associados ou endossado pela Riot Games, Inc. Todos os direitos autoriais, marcas, imagens e marcas de serviço pertencem a seus respectivos proprietários.
 
                                 </p>
-                                
-                        </div>
+
                             </div>
                         </div>
+                    </div>
                 </div>
 
             </footer>

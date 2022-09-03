@@ -2,7 +2,7 @@
   "name": "meuapp",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://Matheusrrcs.github.io/Pai-Do-Elojob-2.0",
+  "homepage": "https://matheusrrcs.github.io/Pai-Do-Elojob-2.0/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.2.0",

@@ -1,0 +1,32 @@
+{
+  "files": {
+    "main.css": "/Pai-Do-Elojob-2.0/static/css/main.9f6aca04.css",
+    "main.js": "/Pai-Do-Elojob-2.0/static/js/main.bb328a79.js",
+    "static/media/braum.webm": "/Pai-Do-Elojob-2.0/static/media/braum.ee1559115a330d181dd4.webm",
+    "static/media/braum_bgk_still.jpg": "/Pai-Do-Elojob-2.0/static/media/braum_bgk_still.6344030c60567b90606a.jpg",
+    "static/media/Nelson Engraved.otf": "/Pai-Do-Elojob-2.0/static/media/Nelson Engraved.18516a572af95fb4589b.otf",
+    "static/media/imagem-braum.png": "/Pai-Do-Elojob-2.0/static/media/imagem-braum.fc9213d1ba4b6b504b05.png",
+    "static/media/comentario-corvo.png": "/Pai-Do-Elojob-2.0/static/media/comentario-corvo.4443a4aad0be71714ddc.png",
+    "static/media/comentario-cervo.png": "/Pai-Do-Elojob-2.0/static/media/comentario-cervo.58c98d1238814b2da723.png",
+    "static/media/comentario-raiva.png": "/Pai-Do-Elojob-2.0/static/media/comentario-raiva.ff61edebf99409266f55.png",
+    "static/media/comentario-sylas.png": "/Pai-Do-Elojob-2.0/static/media/comentario-sylas.b3c301fc2c01e982dbe6.png",
+    "static/media/volibier.png": "/Pai-Do-Elojob-2.0/static/media/volibier.3b7e65d06a76e31a3549.png",
+    "static/media/shen.png": "/Pai-Do-Elojob-2.0/static/media/shen.32769c190f7335c5adf0.png",
+    "static/media/ashe.png": "/Pai-Do-Elojob-2.0/static/media/ashe.00aa272be00295af65df.png",
+    "static/media/textureBG.jpg": "/Pai-Do-Elojob-2.0/static/media/textureBG.9d170437e700631cae37.jpg",
+    "static/media/payment-methods.webp": "/Pai-Do-Elojob-2.0/static/media/payment-methods.e1fcf60c63af3ce5c910.webp",
+    "index.html": "/Pai-Do-Elojob-2.0/index.html",
+    "static/media/wr.svg": "/Pai-Do-Elojob-2.0/static/media/wr.30243cd1827a96c3500971927bdaa368.svg",
+    "static/media/lol.svg": "/Pai-Do-Elojob-2.0/static/media/lol.41b0c116f39b05862381f213932af884.svg",
+    "static/media/line.svg": "/Pai-Do-Elojob-2.0/static/media/line.188053b86f315dfe735cd44da6e0869c.svg",
+    "static/media/titleDivider.svg": "/Pai-Do-Elojob-2.0/static/media/titleDivider.8d6edd1f80bb08c107277e981a363cb5.svg",
+    "static/media/waves.svg": "/Pai-Do-Elojob-2.0/static/media/waves.dec6ede18693da4349c281dd50d84728.svg",
+    "static/media/valorant.svg": "/Pai-Do-Elojob-2.0/static/media/valorant.d2b5f357ca190f11c132be8ae76d896b.svg",
+    "main.9f6aca04.css.map": "/Pai-Do-Elojob-2.0/static/css/main.9f6aca04.css.map",
+    "main.bb328a79.js.map": "/Pai-Do-Elojob-2.0/static/js/main.bb328a79.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.9f6aca04.css",
+    "static/js/main.bb328a79.js"
+  ]
+}

@@ -1,0 +1,109 @@
+.calculadora {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    margin-top: 200px;
+    flex-direction: column;
+
+}
+
+.titulo-calculadora {
+    color: #FFFFFF;
+    text-transform: uppercase;
+    font-weight: bolder;
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+}
+
+.calculadora-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    flex-direction: column;
+}
+
+.calculadora .row {
+    width: 100%;
+    margin: 50px 0;
+}
+
+.calculadora .paragrafo{
+margin-top: 20px;
+padding-bottom: 20px;
+}
+.calculadora .body-jogo {
+    background-color: #424242;
+    text-align: center;
+    padding: 2.5rem;
+    border-radius: 20px 1px 20px 1px;
+    position: relative;
+
+}
+
+.calculadora .body-jogo.active {
+    background-color: #379ccf;
+
+}
+
+
+
+.calculadora .body-jogo.lol::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("../../assets/img/background/lol.svg");
+    background-position: top right;
+    background-repeat: no-repeat;
+    background-size: contain;
+    opacity: 0.3;
+}
+
+
+.calculadora .body-jogo.wd::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("../../assets/img/background/wr.svg");
+    background-position: top right;
+    background-repeat: no-repeat;
+    background-size: contain;
+    opacity: 0.3;
+}
+
+.calculadora .body-jogo.vava::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("../../assets/img/background/valorant.svg");
+    background-position: top right;
+    background-repeat: no-repeat;
+    background-size: contain;
+    opacity: 0.3;
+}
+
+
+
+
+.calculadora .body-jogo .subtitulo {
+   text-transform: uppercase;
+    margin: 0;
+
+}
+
+.flag{
+    width: 100%;
+}
+
+ 

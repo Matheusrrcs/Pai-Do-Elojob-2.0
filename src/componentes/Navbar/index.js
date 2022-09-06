@@ -7,6 +7,7 @@ import anime from 'animejs/lib/anime.es.js';
 import lol from "../../assets/img/background/lol.svg"
 import wr from "../../assets/img/background/wr.svg"
 import valorant from "../../assets/img/background/valorant.svg"
+import { useNavigate } from 'react-router';
 
 // logo do navbar
 class NavbarLogo extends Component {
@@ -62,9 +63,9 @@ class NavItemDropdown extends Component {
         </a>
 
         <ul className="dropdown-menu styled-menu" aria-labelledby="dropdownMenuButton">
-          <ItemDrop nome="LEAGUE OF LEGENDS" icone={<img src={lol} alt="logo do jogo" />} />
-          <ItemDrop nome="WILD RIFT" icone={<img src={wr} alt="logo do jogo" />} />
-          <ItemDrop nome="VALORANT" icone={<img src={valorant} alt="logo do jogo" />} />
+          <ItemDrop tipoJogo="LEAGUE OF LEGENDS" nome="coach" icone={<img src={lol} alt="logo do jogo" />} />
+          <ItemDrop tipoJogo="WILD RIFT" nome="coach" icone={<img src={wr} alt="logo do jogo" />} />
+          <ItemDrop tipoJogo="VALORANT" nome="coach" icone={<img src={valorant} alt="logo do jogo" />} />
 
         </ul>
       </li>
@@ -89,9 +90,9 @@ class NavItemDropdownService extends Component {
                   <p> lol boost</p>
                 </div>
                 <div className="bgk-itemDrop lol"></div>
-                <ItemDrop nome="Elo boost" icone={<i class="fa-solid fa-circle-up"></i>} />
-                <ItemDrop nome="Duo boost" icone={<i class="fa-solid fa-user-group"></i>} />
-                <ItemDrop nome="Md10" icone={<i class="fa-solid fa-chalkboard-user"></i>} />
+                <ItemDrop tipoJogo="Elo boost" nome="league of legends" icone={<i class="fa-solid fa-circle-up"></i>} />
+                <ItemDrop tipoJogo="Duo boost" nome="league of legends" icone={<i class="fa-solid fa-user-group"></i>} />
+                <ItemDrop tipoJogo="Md10" nome="league of legends" icone={<i class="fa-solid fa-chalkboard-user"></i>} />
 
               </div>
               <div className="col-lg-4 itemDrop-body wd">
@@ -99,9 +100,9 @@ class NavItemDropdownService extends Component {
                   <p>Wild Rift boost</p>
                 </div>
                 <div className="bgk-itemDrop wd"></div>
-                <ItemDrop nome="Elo boost" icone={<i class="fa-solid fa-circle-up"></i>} />
-                <ItemDrop nome="Duo boost" icone={<i class="fa-solid fa-user-group"></i>} />
-                <ItemDrop nome="Md10" icone={<i class="fa-solid fa-chalkboard-user"></i>} />
+                <ItemDrop tipoJogo="Elo boost" nome="wild rift" icone={<i class="fa-solid fa-circle-up"></i>} />
+                <ItemDrop tipoJogo="Duo boost" nome="wild rift" icone={<i class="fa-solid fa-user-group"></i>} />
+                <ItemDrop tipoJogo="Md10" nome="wild rift" icone={<i class="fa-solid fa-chalkboard-user"></i>} />
 
               </div>
               <div className="col-lg-4 itemDrop-body vava">
@@ -109,9 +110,9 @@ class NavItemDropdownService extends Component {
                   <p>Valorant boost</p>
                 </div>
                 <div className="bgk-itemDrop vava"></div>
-                <ItemDrop nome="Elo boost" icone={<i class="fa-solid fa-circle-up"></i>} />
-                <ItemDrop nome="Duo boost" icone={<i class="fa-solid fa-user-group"></i>} />
-                <ItemDrop nome="Md5" icone={<i class="fa-solid fa-chalkboard-user"></i>} />
+                <ItemDrop tipoJogo="Elo boost" nome="valorant" icone={<i class="fa-solid fa-circle-up"></i>} />
+                <ItemDrop tipoJogo="Duo boost" nome="valorant" icone={<i class="fa-solid fa-user-group"></i>} />
+                <ItemDrop tipoJogo="Md5" nome="valorant" icone={<i class="fa-solid fa-chalkboard-user"></i>} />
 
               </div>
 
@@ -127,15 +128,21 @@ class NavItemDropdownService extends Component {
 }
 
 
-class ItemDrop extends Component {
-  render() {
-    return (
-      <li className="item-drop ">
-        <a href="https://www.elojobburn.com/leagueOfLegends/duoboost"
-          className="dropdown-item "><span className='icone-imteDrop'>{this.props.icone}</span>{this.props.nome}</a>
-      </li>
-    )
-  }
+function ItemDrop(props) {
+
+
+
+  const navigate = useNavigate();
+  let nome = props.nome.toLowerCase().replace(/\s+/g, '');
+  let tipoJogo = props.tipoJogo.toLowerCase().replace(/\s+/g, '');
+
+  return (
+    <li className="item-drop ">
+      <a
+        className="dropdown-item " onClick={() => { nome === 'coach' ?navigate(`/${tipoJogo}/${nome}`): navigate(`/${nome}/${tipoJogo}`)  }}><span className='icone-imteDrop'>{props.icone}</span>{props.tipoJogo}</a>
+    </li>
+  )
+
 }
 
 
@@ -344,9 +351,9 @@ class Navbar extends Component {
 
               <NavItem nome="Início" clase="nav-item active" />
               <NavItemDropdownService nome="Serviços" />
-          <NavItemDropdown nome="Coach" />
-          <NavItem nome="Contato" clase="nav-item" />
-          <NavItem nome="Juntar-se" clase="nav-item" />
+              <NavItemDropdown nome="Coach" />
+              <NavItem nome="Contato" clase="nav-item" />
+              <NavItem nome="Juntar-se" clase="nav-item" />
               <Botao nome="começar" />
             </ul>
           </div>

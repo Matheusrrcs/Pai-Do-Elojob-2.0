@@ -1,8 +1,9 @@
 import React, {   useEffect } from 'react';
 import { Begin } from "./jsx/Begin"
 import { Route, Routes } from 'react-router';
+
 import Navbar from "./componentes/Navbar"
- 
+
 import Aos from 'aos'
 import "aos/dist/aos.css"
 

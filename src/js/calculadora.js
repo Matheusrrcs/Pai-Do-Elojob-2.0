@@ -1,4 +1,23 @@
- 
+
+var elos = {
+    ferro: 1,
+    bronze: 2,
+    prata: 3,
+    ouro: 4,
+    platina: 5,
+    esmeralda: 6,
+    diamante: 7,
+    mestre: 8,
+    graomestre: 9,
+    desafiante: 10
+}
+
+var divisoes = {
+    IV: 4,
+    III: 3,
+    II: 2,
+    I: 1
+}
 export function trataNomeJogo(jogo) {
 
     if (jogo == "leagueoflegends") {
@@ -15,35 +34,6 @@ export function trataNomeJogo(jogo) {
 
         return "Valorant"
     }
-}
-
-export function activeJogo(jogo) {
-    const active_lol = document.getElementById('bodyLol');
-
-    const active_wd = document.getElementById('bodyWd');
-    const active_vava = document.getElementById('bodyVava');
-
-
-    if (jogo == "leagueoflegends") {
-        active_lol.classList.add('active');
-        active_wd.classList.remove('active');
-        active_vava.classList.remove('active');
-
-    }
-
-    else if (jogo == "wildrift") {
-        active_lol.classList.remove('active');
-        active_wd.classList.add('active');
-        active_vava.classList.remove('active');
-
-    }
-    else {
-        active_lol.classList.remove('active');
-        active_wd.classList.remove('active');
-        active_vava.classList.add('active');
-
-    }
-
 }
 
 
@@ -65,3 +55,88 @@ export function trataJogo(tipoJogo, jogo) {
 
 
 }
+
+
+//muda a cor do background do elo clicado
+export function mudaEscolhido(id) {
+
+    let coluna = document.querySelectorAll("." + id);
+
+    coluna.forEach((col) => {
+        col.addEventListener("click", () => {
+            removeActiveClass();
+
+            if (id === "escolha-elo-body") {
+                let divisao = document.querySelectorAll('.divisoes-escolhas-body');
+
+                divisao.forEach((divisoes) => {
+
+                    divisoes.classList.remove('check');
+                })
+            }
+
+            if (id == "escolha-elo-body-atual") {
+                let divisao = document.querySelectorAll('.divisoes-escolhas-body-atual');
+
+                divisao.forEach((divisoes) => {
+
+
+                    divisoes.classList.remove('check');
+                })
+
+            }
+
+            col.classList.add("check");
+
+        })
+    })
+
+    const removeActiveClass = () => {
+        coluna.forEach((col) => {
+
+            col.classList.remove("check");
+
+        })
+    }
+}
+
+export function verificaElos(eloAtual, eloDesejado, divisaoAtual, divisaoDesejada, jogo) {
+
+    console.log(divisaoAtual)
+   
+    const detalhes = document.querySelector('.detalhes_pedido');
+
+ 
+
+    if (elos[`${eloAtual}`] > elos[`${eloDesejado}`]) {
+        detalhes.classList.add('error');
+    }
+
+    else if (elos[`${eloAtual}`] == elos[`${eloDesejado}`] && divisoes[`${divisaoAtual}`] <= divisoes[`${divisaoDesejada}`]) {
+        detalhes.classList.add('error');
+    }
+    else {
+        detalhes.classList.remove('error');
+    }
+
+  
+}
+
+export function addLoad() {
+    var load = document.querySelector(".carregamento-detalhes-pedido");
+    var pedidoBody = document.querySelector(".body-pedido-principal")
+
+    load.classList.remove("d-none");
+    pedidoBody.classList.add("d-none"); 
+
+function removeAnimation(){
+    load.classList.add("d-none");
+    pedidoBody.remove("d-none");
+}
+
+  setTimeout(
+    removeAnimation()
+  , 200);
+  
+
+}           

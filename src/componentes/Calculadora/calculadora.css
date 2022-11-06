@@ -68,6 +68,11 @@
     align-items: center;
 }
 
+.elos .etap,
+.divisoes .etap {
+    margin-bottom: 1rem;
+}
+
 .btn-elo {
     cursor: pointer;
     text-transform: uppercase;
@@ -152,7 +157,7 @@
     position: absolute;
     left: calc(1.5rem - -8px);
     width: 1px;
-    height: calc(100% - 1rem);
+    height: calc(65% - 1rem);
     border-right: 2px dashed rgba(255, 255, 255, .2);
     top: 3.5rem;
 }
@@ -433,7 +438,7 @@
 
 .trim img {
     width: auto;
-    background: linear-gradient(to bottom ,#222f388f,   #181c23);
+    background: linear-gradient(to bottom, #222f388f, #181c23);
     max-width: 300px;
 }
 
@@ -467,11 +472,335 @@
 
 .modal-body {
 
+    height: auto;
+}
 
-    height: 350px;
+.body-escolhaClas .row {
+    margin: 0;
+}
+
+.carousel {
+    width: 100%;
+}
+
+.detalhes_pedido {
+    background-color: #282C33;
+    width: 384px;
+    height: auto;
+    box-shadow: 2px 1px 15px 2px rgba(0, 0, 0, 0.164);
+    border-radius: 5px;
+    position: relative;
+}
+.detalhes_pedido.error::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9;
+    background-color:#ff3f34;
+    opacity: 0.5 ;
+}
+
+.erro-detalhes-pedido{
+    display: none;
+}
+.detalhes_pedido.error .erro-detalhes-pedido{
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: var(--paragrafo);
+  width: 100%;
+  height: 100%;
+  font-size: 25px;
+  display: flex;
+  align-items: center; 
+  justify-content: center;
+  text-align: center;
+  z-index: 10;
+  padding: 1rem;
+}
+
+.erro-detalhes-pedido i{
+    color: #fff;
+    margin-bottom: 1rem;
+    font-size: 70px;
+}
+.detalhes_pedido.error .body-pedido-principal, .detalhes_pedido.error .cabecalho{
+   filter:blur(5px);
+}
+
+.carregamento-detalhes-pedido{
+    position: absolute;
+    top:0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cabecalho {
+    background-color: #12161b;
+    height: 100px;
+    padding: 1rem;
+}
+
+.body-pedido-cabecalho,
+.body-pedido-cabecalho .row {
+    width: 100%;
+}
+
+.body-pedido-cabecalho .row,
+.body-pedido-principal .row {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 1rem 0 1rem;
 }
 
 
+#valor-pedido-desconto {
+    text-decoration: line-through;
+    opacity: 0.8;
+}
+
+hr {
+    background: var(--paragrafo);
+    opacity: 0.4;
+}
+
+#valor-pedido,
+.total-preco h3 {
+    color: var(--azul-ecsuro);
+}
+
+.elos::before {
+    content: "";
+    position: absolute;
+    left: calc(3rem - -8px);
+    width: 1px;
+    height: calc(50% - 1rem);
+    border-right: 2px dashed rgba(255, 255, 255, .2);
+    top: 4rem;
+}
+
+.detalhes {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 5px;
+}
+
+.switch {
+    display: inline-block;
+    vertical-align: middle;
+    width: 40px;
+    height: 20px;
+    position: relative;
+}
+
+.blue-text {
+    color: var(--azul-ecsuro);
+    font-weight: bolder;
+}
+
+.switch .slider {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-radius: 30px;
+    box-shadow: 0 0 0 2px #777, 0 0 4px #777;
+    cursor: pointer;
+    border: 4px solid transparent;
+    overflow: hidden;
+    transition: 0.4s;
+}
+
+.switch input {
+    display: none;
+    border: 1px solid #d9d9d9;
+    border-radius: 3px;
+    transition: all 0.3s;
+    font-size: 0.9rem;
+
+    padding: 0.5rem;
+    width: 100%;
+    height: 30px;
+}
+
+.escolha-elo-body input,.escolha-elo-body-atual input,
+.divisoes-escolhas-body input,.divisoes-escolhas-body-atual input {
+
+    display: none;
+}
+
+.switch .slider::before {
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 100%;
+    background: #777;
+    border-radius: 30px;
+    transform: translateX(-20px);
+    transition: 0.4s;
+}
+
+.switch input:checked+.slider::before {
+    transform: translateX(20px);
+    background: var(--azul-ecsuro);
+}
+
+.switch input:checked+.slider {
+    box-shadow: 0 0 0 2px var(--azul-ecsuro), 0 0 2px var(--azul-ecsuro);
+}
+
+.switch input:checked+.slide .cabecalho h4 {
+    font-weight: bolder;
+}
+
+.gratis {
+    text-transform: uppercase;
+    color: var(--azul-ecsuro) !important;
+}
+
+ 
+.cabecalho small,
+.body-pedido-principal p {
+    color: var(--paragrafo);
+}
+
+.body-pedido-principal p,
+.body-pedido-principal label {
+    color: var(--paragrafo);
+    margin: 5px;
+}
+.cabecalho h4{
+    color: #fff;
+}
+.body-pedido-principal .row {
+    margin: 0;
+}
+ 
+.escolha-elo-body,.escolha-elo-body-atual {
+    background-color: #12161b;
+    border-radius: 5px;
+    cursor: pointer;
+    position: relative;
+    z-index: 2;
+    margin: 5px;
+    padding: 5px;
+}
+
+.divisoes-escolhas-body,.divisoes-escolhas-body-atual{
+    background-color: #12161b;
+    text-align: center;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    position: relative;
+    z-index: 2;
+    margin: 5px;
+    width: 45px;
+    height: 45px;
+
+}
+
+.divisoes-escolhas-body h3,.divisoes-escolhas-body-atul h3 {
+    font-size: 25px;
+    margin: 0;
+}
+
+
+.divisoes {
+    display: flex;
+    flex-direction: column;
+}
+
+.divisoes-escolhas {
+    display: flex;
+    position: relative;
+}
+
+.escolha-elo-body.check,.escolha-elo-body-atual.check,
+.divisoes-escolhas-body.check,.divisoes-escolhas-body-atual.check {
+    background-color: var(--azul-ecsuro);
+}
+
+.escolha-elo-body:hover,.escolha-elo-body-atual:hover
+.divisoes-escolhas-body:hover,.divisoes-escolhas-body-atual:hover {
+    transform: translateY(-5px);
+}
+
+.escolhe-elo-ferro svg path {
+    fill: #534a4c;
+}
+
+.escolhe-elo-bronze svg path {
+    fill: #8c513a;
+}
+
+.escolhe-elo-prata svg path {
+    fill: #80989d;
+}
+
+.escolhe-elo-ouro svg path {
+    fill: #cd8837;
+}
+
+.escolhe-elo-platina svg path {
+    fill: #4f9996;
+}
+
+.escolhe-elo-diamante svg path {
+    fill: #5a6ecf;
+}
+
+.escolhe-elo-mestre svg path {
+    fill: #9d48e0;
+}
+
+.escolhe-elo-graomestre svg path {
+    fill: #cd4545;
+}
+
+.escolhe-elo-desafiante svg path {
+    fill: #f3ca7c;
+}
+
+.escolhe-elo-esmeralda svg path {
+    fill: #50C878;
+}
+
+.elos-img-escolha {
+    width: 45px;
+    height: 45px;
+}
+
+.escolhe-elo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.divisoes-escolhas.desabled .divisoes-escolhas-body {
+    opacity: 0.5;
+}
+
+.divisoes-escolhas.desabled::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 23;
+}
 
 @keyframes test {
     0% {

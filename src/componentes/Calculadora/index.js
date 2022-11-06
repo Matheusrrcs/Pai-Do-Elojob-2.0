@@ -1,218 +1,92 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { useNavigate, useParams } from 'react-router';
-import { trataNomeJogo, trataJogo, activeJogo, addEloAtual } from "../../js/calculadora.js"
+import { trataNomeJogo, trataJogo, mudaEscolhido, verificaElos, addLoad } from "../../js/calculadora.js"
 import './calculadora.css'
 import Footer from '../footer/'
-
+import Botao from '../Botao'
 import $ from 'jquery';
+
+import carregamento from '../../assets/img/carregamento/carregamento.svg'
+
 import ferro from '../../assets/img/elos/ferro.webp';
 import bronze from '../../assets/img/elos/bronze.webp';
 import prata from '../../assets/img/elos/prata.webp';
 import ouro from '../../assets/img/elos/ouro.webp';
 import platina from '../../assets/img/elos/platina.webp';
 import diamante from '../../assets/img/elos/diamante.webp';
-import esmeralda from '../../assets/img/elos/esmeralda.webp';
 import mestre from '../../assets/img/elos/mestre.webp';
 import graomestre from '../../assets/img/elos/graomestre.webp';
 import desafiante from '../../assets/img/elos/desafiante.webp';
-import bronzeTrim from '../../assets/img/lanes/bronzeTrim.png'
-import { useEffect } from 'react';
-import { Carousel } from '3d-react-carousal';
 
+import ferroWd from '../../assets/img/elos/wildRift/ferro.webp';
+import bronzeWd from '../../assets/img/elos/wildRift/bronze.webp';
+import prataWd from '../../assets/img/elos/wildRift/prata.webp';
+import ouroWd from '../../assets/img/elos/wildRift/ouro.webp';
+import platinaWd from '../../assets/img/elos/wildRift/platina.webp';
+import diamanteWd from '../../assets/img/elos/wildRift/diamante.webp';
+import mestreWd from '../../assets/img/elos/wildRift/mestre.webp';
+import graomestreWd from '../../assets/img/elos/wildRift/graomestre.webp';
+import desafianteWd from '../../assets/img/elos/wildRift/desafiante.webp';
+import esmeraldaWd from '../../assets/img/elos/wildRift/esmeralda.webp';
 
 export default function Calculadora() {
     const { jogo, tipoJogo } = useParams();
     const navigate = useNavigate();
+
     const [laneP, setLaneP] = useState("mid");
     const [laneS, setLaneS] = useState("bot");
 
-    const [eloAtual, setEloAtual] = useState('prata IV');
-    const [eloDesejado, setEloDesejado] = useState('prata III');
+    const [eloAtual, setEloAtual] = useState('prata');
+    const [eloDesejado, setEloDesejado] = useState('prata');
 
-    const [eloBLol, setEloBLol] = useState([]);
-     
-    function EloAtual(props) {
+    const [eloAtualDuo, setEloAtualDuo] = useState('prata');
+    const [eloDesejadoDuo, setEloDesejadoDuo] = useState('prata');
 
+    const [eloAtualWd, setEloAtualWd] = useState('prata');
+    const [eloDesejadoWd, setEloDesejadoWd] = useState('prata');
 
-        return (
-
-            <div className="body-escolhas">
-                <div className="img-escolhaClas">
-                    <img src={props.src} alt="imagem do elo ferro" />
-                </div>
-
-                {props.title === 'Mestre' || props.title === 'Grão Mestre' || props.title === 'Desafiante' ?
-
-                    < div className="row justify-content-center">
-                        <div className="col-xs-6 body-btn-escolha" data-dismiss="modal">
-                            <div className="title-escolha-clas" onClick={(e) => {
-
-                                setEloAtual(e.target.textContent);
+    const [eloAtualWdDuo, setEloAtualWdDuo] = useState('prata');
+    const [eloDesejadoWdDuo, setEloDesejadoWdDuo] = useState('prata');
 
 
-                            }}>
-                                <p>{props.title}</p>
-                            </div></div>
-                    </div>
-                    :
-                    <div>
-                        <div className="row">
-                            <div className="col-xs-6 body-btn-escolha" data-dismiss="modal">
-                                <div className="title-escolha-clas" onClick={(e) => {
+    const [divisaoDesejado, setDivisaoDesejado] = useState('III');
+    const [divisaoaAtual, setDivisaoAtual] = useState('IV');
 
-                                    setEloAtual(e.target.textContent);
+    const [divisaoDesejadoWd, setDivisaoDesejadoWd] = useState('III');
+    const [divisaoaAtualWd, setDivisaoAtualWd] = useState('IV');
 
+    const [divisaoDesejadoDuo, setDivisaoDesejadoDuo] = useState('III');
+    const [divisaoaAtualDuo, setDivisaoAtualDuo] = useState('IV');
 
-                                }}>
-                                    <p>{props.title} IV</p>
-                                </div></div>
-                            <div className="col-xs-6 body-btn-escolha" data-dismiss="modal">
-                                <div className="title-escolha-clas" onClick={(e) => {
+    const [divisaoDesejadoWdDuo, setDivisaoDesejadoWdDuo] = useState('III');
+    const [divisaoaAtualWdDuo, setDivisaoAtualWdDuo] = useState('IV');
 
-                                    setEloAtual(e.target.textContent);
+    const [divisao, setDivisao] = useState(['IV', 'III', 'II', 'I']);
 
-                                }}>
-                                    <p>{props.title} III</p>
-                                </div>
-                            </div>
-                        </div>
+    const [elo, setElo] = useState([{ caminho: ferro, nome: "ferro" }, { caminho: bronze, nome: 'bronze' }, { caminho: prata, nome: 'prata' }, { caminho: ouro, nome: 'ouro' }, { caminho: platina, nome: 'platina' }, { caminho: diamante, nome: 'diamante' }, { caminho: mestre, nome: 'mestre' }, { caminho: graomestre, nome: 'graomestre' }, { caminho: desafiante, nome: 'desafiante' }]);
 
-                        <div className="row">
-                            <div className="col-xs-6 body-btn-escolha" data-dismiss="modal">
-                                <div className="title-escolha-clas" onClick={(e) => {
+    const [eloDuo, setEloDuo] = useState([{ caminho: ferro, nome: "ferro" }, { caminho: bronze, nome: 'bronze' }, { caminho: prata, nome: 'prata' }, { caminho: ouro, nome: 'ouro' }, { caminho: platina, nome: 'platina' }, { caminho: diamante, nome: 'diamante' }, { caminho: mestre, nome: 'mestre' }]);
 
-                                    setEloAtual(e.target.textContent);
+    const [eloWd, setEloWd] = useState([{ caminho: ferroWd, nome: "ferro" }, { caminho: bronzeWd, nome: 'bronze' }, { caminho: prataWd, nome: 'prata' }, { caminho: ouroWd, nome: 'ouro' }, { caminho: platinaWd, nome: 'platina' }, { caminho: esmeraldaWd, nome: 'esmeralda' }, { caminho: diamanteWd, nome: 'diamante' }, { caminho: mestreWd, nome: 'mestre' }, { caminho: graomestreWd, nome: 'graomestre' }, { caminho: desafianteWd, nome: 'desafiante' }]);
 
-                                }}>
-                                    <p>{props.title} II</p>
-                                </div>
-                            </div>
-                            <div className="col-xs-6 body-btn-escolha" data-dismiss="modal">
-                                <div className="title-escolha-clas" onClick={(e) => {
+    const [eloWdDuo, setEloWdDuo] = useState([{ caminho: ferroWd, nome: "ferro" }, { caminho: bronzeWd, nome: 'bronze' }, { caminho: prataWd, nome: 'prata' }, { caminho: ouroWd, nome: 'ouro' }, { caminho: platinaWd, nome: 'platina' }, { caminho: esmeraldaWd, nome: 'esmeralda' }, { caminho: diamanteWd, nome: 'diamante' }, { caminho: mestreWd, nome: 'mestre' }]);
 
-                                    setEloAtual(e.target.textContent);
-
-                                }}>
-                                    <p>{props.title} I</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                }
-
-
-            </div >
-
-
-        )
-
-    }
-
-    function EloDesejado(props) {
-
-
-        return (
-
-            <div className="body-escolhas">
-                <div className="img-escolhaClas">
-                    <img src={props.src} alt="imagem do elo ferro" />
-                </div>
-
-                {props.title === 'Mestre' || props.title === 'Grão Mestre' || props.title === 'Desafiante' ?
-
-                    < div className="row justify-content-center">
-                        <div className="col-xs-6 body-btn-escolha" data-dismiss="modal">
-                            <div className="title-escolha-clas" onClick={(e) => {
-
-                                setEloDesejado(e.target.textContent);
-
-
-                            }}>
-                                <p>{props.title}</p>
-                            </div></div>
-                    </div>
-                    :
-                    <div>
-                        <div className="row">
-                            <div className="col-xs-6 body-btn-escolha" data-dismiss="modal">
-                                <div className="title-escolha-clas" onClick={(e) => {
-
-                                    setEloDesejado(e.target.textContent);
-
-
-                                }}>
-                                    <p>{props.title} IV</p>
-                                </div></div>
-                            <div className="col-xs-6 body-btn-escolha" data-dismiss="modal">
-                                <div className="title-escolha-clas" onClick={(e) => {
-
-                                    setEloDesejado(e.target.textContent);
-
-                                }}>
-                                    <p>{props.title} III</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="row">
-                            <div className="col-xs-6 body-btn-escolha" data-dismiss="modal">
-                                <div className="title-escolha-clas" onClick={(e) => {
-
-                                    setEloDesejado(e.target.textContent);
-
-                                }}>
-                                    <p>{props.title} II</p>
-                                </div>
-                            </div>
-                            <div className="col-xs-6 body-btn-escolha" data-dismiss="modal">
-                                <div className="title-escolha-clas" onClick={(e) => {
-
-                                    setEloDesejado(e.target.textContent);
-
-                                }}>
-                                    <p>{props.title} I</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                }
-
-
-            </div >
-
-
-        )
-
-    }
-
- 
+    const [finishedTimeout, setFinishedTimeout] = useState('d-none');
 
     useEffect(() => {
-        if (jogo === 'leagueoflegends') {
-            setEloBLol([<EloAtual src={ferro} title="Ferro" />,
-            <EloAtual src={bronze} title="Bronze" />,
-            <EloAtual src={prata} title="Prata" />,
-            <EloAtual src={ouro} title="Ouro" />,
-            <EloAtual src={platina} title="Platina" />,
-            <EloAtual src={diamante} title="Diamante" />,
-            <EloAtual src={mestre} title="Mestre" />,
-            <EloAtual src={graomestre} title="Grão Mestre" />,
-            <EloAtual src={desafiante} title="Desafiante" />])
-        }
-        if (jogo === 'wildrift') {
-            setEloBLol([
-                <EloDesejado src={ferro} title="Ferro" />,
-                <EloDesejado src={bronze} title="Bronze" />,
-                <EloDesejado src={prata} title="Prata" />,
-                <EloDesejado src={ouro} title="Ouro" />,
-                <EloDesejado src={platina} title="Platina" />,
-                <EloDesejado src={diamante} title="Diamante" />,
-                <EloDesejado src={mestre} title="Mestre" />
-            ])
-        }
-    }, [laneP])
 
+        verificaElos(eloAtual, eloDesejado, divisaoaAtual, divisaoDesejado, jogo);
+        mudaEscolhido("escolha-elo-body-atual");
+        setFinishedTimeout("");
+
+        setTimeout(() => { 
+            setFinishedTimeout('d-none');
+        }, 500);
+
+    }, [divisaoaAtual, divisaoDesejado, eloDesejado, eloAtual]);
+
+ 
 
     return (
         <div className="calculadora">
@@ -230,28 +104,59 @@ export default function Calculadora() {
                     <p>Serviço {trataNomeJogo(jogo)} premium pronto para começar agora com um preço acessível.</p>
                 </div>
 
+                {/* trocar de jogo */}
                 <div className="row">
 
                     <div className="col-lg-4">
-                        <div className="body-jogo active lol" id="bodyLol" onClick={() => navigate(`/leagueoflegends/${tipoJogo === 'md5' ? 'md10' : tipoJogo} `)}>
-                            <h5 className="subtitulo">Lol {trataJogo(tipoJogo, jogo) === 'Md5' ? 'Md10' : trataJogo(tipoJogo, jogo)}</h5>
-                        </div>
+                        {
+                            jogo == "leagueoflegends" ?
+                                <div className="body-jogo active lol" id="bodyLol" onClick={() => navigate(`/leagueoflegends/${tipoJogo === 'md5' ? 'md10' : tipoJogo} `)}>
+                                    <h5 className="subtitulo">Lol {trataJogo(tipoJogo, jogo) === 'Md5' ? 'Md10' : trataJogo(tipoJogo, jogo)}</h5>
+                                </div>
+                                :
+                                <div className="body-jogo lol" id="bodyLol" onClick={() => navigate(`/leagueoflegends/${tipoJogo === 'md5' ? 'md10' : tipoJogo} `)}>
+                                    <h5 className="subtitulo">Lol {trataJogo(tipoJogo, jogo) === 'Md5' ? 'Md10' : trataJogo(tipoJogo, jogo)}</h5>
+                                </div>
+                        }
+
                     </div>
                     <div className="col-lg-4">
-                        <div className="body-jogo wd" id="bodyWd" onClick={() => navigate(`/wildrift/${tipoJogo === 'md5' ? 'md10' : tipoJogo}`)}>
-                            <h5 className="subtitulo">Wild Rift {trataJogo(tipoJogo, jogo) === 'Md5' ? 'Md10' : trataJogo(tipoJogo, jogo)
-                            }
-                            </h5>
-                        </div>
+                        {
+                            jogo == "wildrift" ?
+                                <div className="body-jogo active wd" id="bodyWd" onClick={() => navigate(`/wildrift/${tipoJogo === 'md5' ? 'md10' : tipoJogo}`)}>
+                                    <h5 className="subtitulo">Wild Rift {trataJogo(tipoJogo, jogo) === 'Md5' ? 'Md10' : trataJogo(tipoJogo, jogo)
+                                    }
+                                    </h5>
+                                </div>
+                                :
+                                <div className="body-jogo wd" id="bodyWd" onClick={() => navigate(`/wildrift/${tipoJogo === 'md5' ? 'md10' : tipoJogo}`)}>
+                                    <h5 className="subtitulo">Wild Rift {trataJogo(tipoJogo, jogo) === 'Md5' ? 'Md10' : trataJogo(tipoJogo, jogo)
+                                    }
+                                    </h5>
+                                </div>
+                        }
+
                     </div>
                     <div className="col-lg-4">
-                        <div className="body-jogo vava" id="bodyVava" onClick={() => navigate(`/valorant/${tipoJogo === 'md10' ? 'md5' : tipoJogo}`)}>
-                            <h5 className="subtitulo">Valorant {
+                        {
+                            jogo == 'valorant' ?
+                                <div className="body-jogo active vava" id="bodyVava" onClick={() => navigate(`/valorant/${tipoJogo === 'md10' ? 'md5' : tipoJogo}`)}>
+                                    <h5 className="subtitulo">Valorant {
 
-                                trataJogo(tipoJogo, jogo) === 'Md10' ? 'Md5' : trataJogo(tipoJogo, jogo)
+                                        trataJogo(tipoJogo, jogo) === 'Md10' ? 'Md5' : trataJogo(tipoJogo, jogo)
 
-                            }</h5>
-                        </div>
+                                    }</h5>
+                                </div>
+                                :
+                                <div className="body-jogo vava" id="bodyVava" onClick={() => navigate(`/valorant/${tipoJogo === 'md10' ? 'md5' : tipoJogo}`)}>
+                                    <h5 className="subtitulo">Valorant {
+
+                                        trataJogo(tipoJogo, jogo) === 'Md10' ? 'Md5' : trataJogo(tipoJogo, jogo)
+
+                                    }</h5>
+                                </div>
+                        }
+
                     </div>
                 </div>
 
@@ -261,6 +166,7 @@ export default function Calculadora() {
                     {/* escolha do pedido */}
                     <di className="row body-flags">
 
+                        {/* elo atual */}
                         <div className="col-lg-8">
                             <div className="etap">
                                 <div class="icone-etap"><i class="fa-solid fa-cart-shopping"></i></div>
@@ -278,24 +184,102 @@ export default function Calculadora() {
                                         </svg>
                                         <div className="body-pedido">
                                             <div className="img-elo">
-                                                <img src={require(`../../assets/img/elos/${eloAtual.split(' ')[0].toLocaleLowerCase() === "grão" ? "graomestre" : eloAtual.split(' ')[0].toLocaleLowerCase()}.webp`)} alt="imagem do elo" />
+                                                {
+                                                    jogo == 'leagueoflegends' && tipoJogo == 'eloboost' ?
+
+                                                        <img src={require(`../../assets/img/elos/${eloAtual}.webp`)} alt="imagem do elo" />
+                                                        :
+                                                        jogo == 'leagueoflegends' && tipoJogo == 'duoboost' ?
+                                                            <img src={require(`../../assets/img/elos/${eloAtualDuo}.webp`)} alt="imagem do elo" />
+                                                            :
+                                                            jogo == 'wildrift' && tipoJogo == 'eloboost' ?
+                                                                <img src={require(`../../assets/img/elos/wildRift/${eloAtualWd}.webp`)} alt="imagem do elo" />
+                                                                :
+                                                                jogo == 'wildrift' && tipoJogo == 'duoboost' ?
+                                                                    <img src={require(`../../assets/img/elos/wildRift/${eloAtualWdDuo}.webp`)} alt="imagem do elo" />
+                                                                    :
+                                                                    <img src={require(`../../assets/img/elos/${eloAtual}.webp`)} alt="imagem do elo" />
+                                                }
                                             </div>
 
 
-                                            <a data-toggle="modal" className='btn-elo' data-target="#modalEloAtual"  >
-                                                <div className="body-title-btn-elo">
-                                                    <span className="titulo-btn-elo">
-                                                        <h4>{eloAtual.split(' ')[0] === "Grão" ? 'Grão Mestre' : eloAtual.split(' ')[0]}</h4>
-                                                    </span>
-                                                    <span className="titulo-btn-elo">
-                                                        <h5>  {eloAtual.split(" ")[0] === "Grão" || eloAtual.split(" ")[0] === 'Mestre' || eloAtual.split(" ")[0] === 'Desafiante' ? ' ' : 'DIVISÃO ' +
-                                                            eloAtual.split(" ")[1]}</h5>
-                                                    </span>
-                                                    <div className="icon-btn-elo">
-                                                        <i class="fa-solid fa-pen"></i>
-                                                    </div>
-                                                </div>
+                                            <a data-toggle="modal" className='btn-elo' data-target="#modalEloAtual">
+                                                {
 
+                                                    jogo == 'leagueoflegends' && tipoJogo == 'eloboost' ?
+                                                        <div className="body-title-btn-elo">
+
+                                                            <span className="titulo-btn-elo">
+                                                                <h4>{eloAtual === "graomestre" ? 'Grão Mestre' : eloAtual}</h4>
+                                                            </span>
+                                                            <span className="titulo-btn-elo">
+                                                                <h5>{eloAtual === "graomestre" || eloAtual === "mestre" || eloAtual === 'desafiante' ? '' : `DIVISÃO ${divisaoaAtual}`}</h5>
+                                                            </span>
+                                                            <div className="icon-btn-elo">
+                                                                <i class="fa-solid fa-pen"></i>
+                                                            </div>
+
+                                                        </div>
+                                                        :
+                                                        jogo == 'leagueoflegends' && tipoJogo == 'duoboost' ?
+                                                            <div className="body-title-btn-elo">
+
+                                                                <span className="titulo-btn-elo">
+                                                                    <h4>{eloAtualDuo === "graomestre" ? 'Grão Mestre' : eloAtualDuo}</h4>
+                                                                </span>
+                                                                <span className="titulo-btn-elo">
+                                                                    <h5>{eloAtualDuo === "graomestre" || eloAtualDuo === "mestre" || eloAtualDuo === 'desafiante' ? '' : `DIVISÃO ${divisaoaAtualDuo}`}</h5>
+                                                                </span>
+                                                                <div className="icon-btn-elo">
+                                                                    <i class="fa-solid fa-pen"></i>
+                                                                </div>
+
+                                                            </div>
+                                                            :
+                                                            jogo == 'wildrift' && tipoJogo == 'eloboost' ?
+                                                                <div className="body-title-btn-elo">
+
+                                                                    <span className="titulo-btn-elo">
+                                                                        <h4>{eloAtualWd === "graomestre" ? 'Grão Mestre' : eloAtualWd}</h4>
+                                                                    </span>
+                                                                    <span className="titulo-btn-elo">
+                                                                        <h5>{eloAtualWd === "graomestre" || eloAtualWd === "mestre" || eloAtualWd === 'desafiante' ? '' : `DIVISÃO ${divisaoaAtualWd}`}</h5>
+                                                                    </span>
+                                                                    <div className="icon-btn-elo">
+                                                                        <i class="fa-solid fa-pen"></i>
+                                                                    </div>
+
+                                                                </div>
+                                                                :
+                                                                jogo == 'wildrift' && tipoJogo == 'duoboost' ?
+                                                                    <div className="body-title-btn-elo">
+
+                                                                        <span className="titulo-btn-elo">
+                                                                            <h4>{eloAtualWdDuo === "graomestre" ? 'Grão Mestre' : eloAtualWdDuo}</h4>
+                                                                        </span>
+                                                                        <span className="titulo-btn-elo">
+                                                                            <h5>{eloAtualWdDuo === "graomestre" || eloAtualWdDuo === "mestre" || eloAtualWdDuo === 'desafiante' ? '' : `DIVISÃO ${divisaoaAtualWdDuo}`}</h5>
+                                                                        </span>
+                                                                        <div className="icon-btn-elo">
+                                                                            <i class="fa-solid fa-pen"></i>
+                                                                        </div>
+
+                                                                    </div>
+                                                                    :
+                                                                    <div className="body-title-btn-elo">
+
+                                                                        <span className="titulo-btn-elo">
+                                                                            <h4>{eloAtual === "graomestre" ? 'Grão Mestre' : eloAtual}</h4>
+                                                                        </span>
+                                                                        <span className="titulo-btn-elo">
+                                                                            <h5>{eloAtual === "graomestre" || eloAtual === "mestre" || eloAtual === 'desafiante' ? '' : `DIVISÃO ${divisaoaAtual}`}</h5>
+                                                                        </span>
+                                                                        <div className="icon-btn-elo">
+                                                                            <i class="fa-solid fa-pen"></i>
+                                                                        </div>
+
+                                                                    </div>
+                                                }
                                             </a>
 
 
@@ -306,6 +290,7 @@ export default function Calculadora() {
 
                                 </div>
 
+                                {/* elo desejado  */}
                                 <div className="col-lg-6">
                                     <div className="title-etap paragrafo"><p>Elo Desejado</p></div>
                                     <div className="flag">
@@ -317,23 +302,105 @@ export default function Calculadora() {
 
                                         <div className="body-pedido">
                                             <div className="img-elo">
-                                                <img src={require(`../../assets/img/elos/${eloDesejado.split(' ')[0].toLocaleLowerCase() === "grão" ? "graomestre" : eloDesejado.split(' ')[0].toLocaleLowerCase()}.webp`)} alt="imagem do elo" />
+                                                {
+
+                                                    jogo == 'leagueoflegends' && tipoJogo == 'eloboost' ?
+                                                        <img src={require(`../../assets/img/elos/${eloDesejado}.webp`)} alt="imagem do elo" />
+                                                        :
+
+                                                        jogo == 'leagueoflegends' && tipoJogo == 'duoboost' ?
+                                                            <img src={require(`../../assets/img/elos/${eloDesejadoDuo}.webp`)} alt="imagem do elo" />
+                                                            :
+                                                            jogo == 'wildrift' && tipoJogo == 'eloboost' ?
+                                                                <img src={require(`../../assets/img/elos/wildRift/${eloDesejadoWd}.webp`)} alt="imagem do elo" />
+                                                                :
+                                                                jogo == 'wildrift' && tipoJogo == 'duoboost' ?
+                                                                    <img src={require(`../../assets/img/elos/wildRift/${eloDesejadoWdDuo}.webp`)} alt="imagem do elo" />
+                                                                    :
+                                                                    <img src={require(`../../assets/img/elos/${eloDesejado}.webp`)} alt="imagem do elo" />
+                                                }
                                             </div>
 
 
                                             <a data-toggle="modal" className='btn-elo' data-target="#modalEloDesejado">
-                                                <div className="body-title-btn-elo">
-                                                    <span className="titulo-btn-elo">
-                                                        <h4>{eloDesejado.split(' ')[0] === "Grão" ? 'Grão Mestre' : eloDesejado.split(' ')[0]}</h4>
-                                                    </span>
-                                                    <span className="titulo-btn-elo">
-                                                        <h5>  {eloDesejado.split(" ")[0] === "Grão" || eloDesejado.split(" ")[0] === 'Mestre' || eloDesejado.split(" ")[0] === 'Desafiante' ? ' ' : 'DIVISÃO ' +
-                                                            eloDesejado.split(" ")[1]}</h5>
-                                                    </span>
-                                                    <div className="icon-btn-elo">
-                                                        <i class="fa-solid fa-pen"></i>
-                                                    </div>
-                                                </div>
+                                                {
+
+                                                    jogo == 'leagueoflegends' && tipoJogo == 'eloboost' ?
+                                                        <div className="body-title-btn-elo">
+
+                                                            <span className="titulo-btn-elo">
+                                                                <h4>{eloDesejado === "graomestre" ? 'Grão Mestre' : eloDesejado}</h4>
+                                                            </span>
+                                                            <span className="titulo-btn-elo">
+                                                                <h5>{eloDesejado === "graomestre" || eloDesejado === "mestre" || eloDesejado === 'desafiante' ? '' : `DIVISÃO ${divisaoDesejado}`}</h5>
+                                                            </span>
+                                                            <div className="icon-btn-elo">
+                                                                <i class="fa-solid fa-pen"></i>
+                                                            </div>
+
+                                                        </div>
+                                                        :
+                                                        jogo == 'leagueoflegends' && tipoJogo == 'duoboost' ?
+                                                            <div className="body-title-btn-elo">
+
+                                                                <span className="titulo-btn-elo">
+                                                                    <h4>{eloDesejadoDuo === "graomestre" ? 'Grão Mestre' : eloDesejadoDuo}</h4>
+                                                                </span>
+                                                                <span className="titulo-btn-elo">
+                                                                    <h5>{eloDesejadoDuo === "graomestre" || eloDesejadoDuo === "mestre" || eloDesejadoDuo === 'desafiante' ? '' : `DIVISÃO ${divisaoDesejadoDuo}`}</h5>
+                                                                </span>
+                                                                <div className="icon-btn-elo">
+                                                                    <i class="fa-solid fa-pen"></i>
+                                                                </div>
+
+                                                            </div>
+                                                            :
+                                                            jogo == 'wildrift' && tipoJogo == 'eloboost' ?
+                                                                <div className="body-title-btn-elo">
+
+                                                                    <span className="titulo-btn-elo">
+                                                                        <h4>{eloDesejadoWd === "graomestre" ? 'Grão Mestre' : eloDesejadoWd}</h4>
+                                                                    </span>
+                                                                    <span className="titulo-btn-elo">
+                                                                        <h5>{eloDesejadoWd === "graomestre" || eloDesejadoWd === "mestre" || eloDesejadoWd === 'desafiante' ? '' : `DIVISÃO ${divisaoDesejadoWd}`}</h5>
+                                                                    </span>
+                                                                    <div className="icon-btn-elo">
+                                                                        <i class="fa-solid fa-pen"></i>
+                                                                    </div>
+
+
+                                                                </div>
+                                                                :
+                                                                jogo == 'wildrift' && tipoJogo == 'eloboost' ?
+                                                                    <div className="body-title-btn-elo">
+
+                                                                        <span className="titulo-btn-elo">
+                                                                            <h4>{eloDesejadoWdDuo === "graomestre" ? 'Grão Mestre' : eloDesejadoWdDuo}</h4>
+                                                                        </span>
+                                                                        <span className="titulo-btn-elo">
+                                                                            <h5>{eloDesejadoWdDuo === "graomestre" || eloDesejadoWdDuo === "mestre" || eloDesejadoWdDuo === 'desafiante' ? '' : `DIVISÃO ${divisaoDesejadoWdDuo}`}</h5>
+                                                                        </span>
+                                                                        <div className="icon-btn-elo">
+                                                                            <i class="fa-solid fa-pen"></i>
+                                                                        </div>
+
+
+                                                                    </div>
+                                                                    :
+                                                                    <div className="body-title-btn-elo">
+
+                                                                        <span className="titulo-btn-elo">
+                                                                            <h4>{eloAtual === "graomestre" ? 'Grão Mestre' : eloAtual}</h4>
+                                                                        </span>
+                                                                        <span className="titulo-btn-elo">
+                                                                            <h5>{eloAtual === "graomestre" || eloAtual === "mestre" || eloAtual === 'desafiante' ? '' : `DIVISÃO ${divisaoaAtual}`}</h5>
+                                                                        </span>
+                                                                        <div className="icon-btn-elo">
+                                                                            <i class="fa-solid fa-pen"></i>
+                                                                        </div>
+
+                                                                    </div>
+                                                }
 
                                             </a>
 
@@ -346,10 +413,183 @@ export default function Calculadora() {
                                 </div>
                             </div>
 
+                            {/* costumização de pedidos */}
+                            <div className="body-costume">
+                                <div className="etap">
+                                    <div class="icone-etap"><i class="fa-solid fa-pen"></i></div>
+                                    <h5>Customize seu pedido gratuitamente</h5>
+                                </div>
+                                <div className="row body-customize">
+
+
+                                    <div className="col-lg-4">
+                                        <div className="costumize">
+                                            <div className="img-lane">
+                                                <img src={require(`../../assets/img/lanes/${laneP}.png`)} alt="imagem da lane" />
+                                            </div>
+                                            <div className="costumize-title paragrafo">
+                                                <p>Primeira posicão</p>
+                                            </div>
+                                            <div className="costuime-select">
+                                                <select name="lane" class="custom-select" onChange={(e) => {
+                                                    setLaneP(e.target.value);
+                                                }}>
+                                                    <option value="top">TOP</option>
+                                                    <option value="bot">BOT</option>
+                                                    <option value="mid" selected="selected">MID</option>
+                                                    <option value="jungle">JUNGLE</option>
+                                                    <option value="suporte">SUPORTE</option>
+                                                    <option value="preencher">PREENCHER</option>
+                                                </select>
+                                            </div>
+                                        </div >
+
+                                    </div>
+
+                                    <div className="col-lg-4">
+                                        <div className="costumize">
+                                            <div className="img-lane">
+                                                <img src={require(`../../assets/img/lanes/${laneS}.png`)} alt="imagem da lane" />
+                                            </div>
+                                            <div className="costumize-title paragrafo">
+                                                <p>Segunda posicão</p>
+                                            </div>
+                                            <div className="costuime-select">
+                                                <select name="lane" class="custom-select" onChange={(e) => {
+                                                    setLaneS(e.target.value);
+                                                }}>
+                                                    <option value="top">TOP</option>
+                                                    <option value="bot" selected="selected">BOT</option>
+                                                    <option value="mid">MID</option>
+                                                    <option value="jungle">JUNGLE</option>
+                                                    <option value="suporte">SUPORTE</option>
+                                                    <option value="preencher">PREENCHER</option>
+                                                </select>
+                                            </div>
+                                        </div >
+                                    </div>
+                                </div>
+
+                            </div>
                         </div>
 
+                        {/* preço final e detalhes do pedido */}
                         <div className="col-lg-4 body_pedidos">
-                            <div className="detalhes_pedido">
+
+                            <div className="detalhes_pedido ">
+
+                                <div className="cabecalho">
+                                    <h4>Detalhes do pedido </h4>
+                                    <small>Aumento para a Divisão {eloDesejado}</small>
+                                </div>
+                                <div className="body-pedido-principal">
+
+                                    <div className="body-pedido-cabecalho">
+                                        <div className="row">
+                                            <div className="col-xs-6">
+                                                <p><b>Divisões solo</b></p>
+                                                {
+                                                    jogo == 'leagueoflegends' ?
+
+                                                        <p>{eloAtual} - {eloDesejado}</p>
+                                                        :
+                                                        jogo == 'wildrift' ?
+                                                            <p>{eloAtualWd} - {eloDesejadoWd}</p>
+                                                            :
+                                                            <p>{eloAtual} - {eloDesejado}</p>
+                                                }
+                                            </div>
+                                            <div className="col-xs-6">
+                                                <p id="valor-pedido-desconto">R$ 1,859,53</p>
+                                                <p id="valor-pedido">R$ 500,00</p>
+                                            </div>
+                                        </div>
+                                        <hr />
+                                    </div>
+
+                                    <div className="body-pedido-principal">
+                                        <p className='pl-3'><b>Adicionais do pedido</b></p>
+                                        <div className="row">
+
+                                            <div className="detalhes">
+                                                <p>Stream dos jogos</p>
+                                                <p className='gratis'>gratuito</p>
+                                            </div>
+
+                                            <div className="detalhes">
+                                                <p>Chat offline</p>
+                                                <p className='gratis'>gratuito</p>
+                                            </div>
+
+                                            <div className="detalhes">
+                                                <p> Definição de horários <span className='blue-text'>+10%</span></p>
+
+                                                <label class="switch float-right">
+                                                    <input class="isExpress" type="checkbox" value="10" id="definicao-horarios" />
+                                                    <span class="slider"></span></label>
+                                            </div>
+
+                                            <div className="detalhes">
+                                                <p>Entrega rápida <span className='blue-text'>+30%</span></p>
+
+                                                <label class="switch float-right">
+                                                    <input class="isExpress" type="checkbox" value="30" id="entraga-rapida" />
+                                                    <span class="slider"></span></label>
+                                            </div>
+
+
+                                            <div className="detalhes">
+                                                <p>Ganho 13 pdl ou menos <span className='blue-text'>+20%</span></p>
+
+                                                <label class="switch float-right">
+                                                    <input class="isExpress" type="checkbox" value="20" id="pdl" />
+                                                    <span class="slider"></span></label>
+                                            </div>
+
+                                            <div className="detalhes">
+                                                <p>Uma vitoria extra <span className='blue-text'>+15%</span></p>
+
+                                                <label class="switch float-right">
+                                                    <input class="isExpress" type="checkbox" value="15" id="vitoria-extra" />
+                                                    <span class="slider"></span></label>
+                                            </div>
+
+                                            <div className="detalhes">
+                                                <p>Serviço mono Champion <span className='blue-text'>+20%</span></p>
+
+                                                <label class="switch float-right">
+                                                    <input class="isExpress" type="checkbox" value="20" id="mono-champion" />
+                                                    <span class="slider"></span></label>
+                                            </div>
+
+
+
+                                        </div>
+                                        <hr />
+                                    </div>
+
+                                    <div className="total-preco">
+                                        <p className='pl-3'><b>Preço total</b></p>
+                                        <h3 className='pl-3'>R$ 800,00</h3>
+                                        <hr />
+                                    </div>
+
+                                    <div className="comprar text-center pb-3">
+                                        <Botao nome='Comprar' />
+                                    </div>
+
+                                </div>
+
+                                <div className="erro-detalhes-pedido">
+                                    <div className="mensagem-erro-detalhes-pedido">
+                                        <i class="fa-solid fa-ban"></i>
+                                        <p>Erro o elo atual deve ser maior que o elo desejado</p>
+                                    </div>
+                                </div>
+
+                                <div className={`carregamento-detalhes-pedido ${finishedTimeout}`}>
+                                    <img src={carregamento} alt="" />
+                                </div>
 
                             </div>
 
@@ -357,68 +597,12 @@ export default function Calculadora() {
 
                     </di>
 
-                    {/* costumização de pedidos */}
-                    <div className="container">
-                        <div className="etap">
-                            <div class="icone-etap"><i class="fa-solid fa-pen"></i></div>
-                            <h5>Customize seu pedido gratuitamente</h5>
-                        </div>
-                        <div className="row body-customize">
 
-
-                            <div className="col-lg-3">
-                                <div className="costumize">
-                                    <div className="img-lane">
-                                        <img src={require(`../../assets/img/lanes/${laneP}.png`)} alt="imagem da lane" />
-                                    </div>
-                                    <div className="costumize-title paragrafo">
-                                        <p>Primeira posicão</p>
-                                    </div>
-                                    <div className="costuime-select">
-                                        <select name="lane" class="custom-select" onChange={(e) => {
-                                            setLaneP(e.target.value);
-                                        }}>
-                                            <option value="top">TOP</option>
-                                            <option value="bot">BOT</option>
-                                            <option value="mid" selected="selected">MID</option>
-                                            <option value="jungle">JUNGLE</option>
-                                            <option value="suporte">SUPORTE</option>
-                                            <option value="preencher">PREENCHER</option>
-                                        </select>
-                                    </div>
-                                </div >
-
-                            </div>
-                            <div className="col-lg-3">
-                                <div className="costumize">
-                                    <div className="img-lane">
-                                        <img src={require(`../../assets/img/lanes/${laneS}.png`)} alt="imagem da lane" />
-                                    </div>
-                                    <div className="costumize-title paragrafo">
-                                        <p>Segunda posicão</p>
-                                    </div>
-                                    <div className="costuime-select">
-                                        <select name="lane" class="custom-select" onChange={(e) => {
-                                            setLaneS(e.target.value);
-                                        }}>
-                                            <option value="top">TOP</option>
-                                            <option value="bot" selected="selected">BOT</option>
-                                            <option value="mid">MID</option>
-                                            <option value="jungle">JUNGLE</option>
-                                            <option value="suporte">SUPORTE</option>
-                                            <option value="preencher">PREENCHER</option>
-                                        </select>
-                                    </div>
-                                </div >
-                            </div>
-                        </div>
-
-                    </div>
                 </div>
 
             </div>
 
-
+            {/* formas de background */}
             <div className='bgkLeft'>
                 <svg width="336" height="704" viewBox="0 0 336 704" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M296.988 2.09839C319.826 -4.30005 340.707 17.0818 333.769 39.7616L137.173 682.447C130.508 704.236 102.942 710.933 87.0222 694.632L-363.544 233.261C-379.464 216.96 -372.115 189.56 -350.175 183.413L296.988 2.09839Z" fill="#12161B" />
@@ -426,6 +610,7 @@ export default function Calculadora() {
 
             </div>
 
+            {/* forma de background */}
             <div className='bgkRight'>
                 <svg width="304" height="928" viewBox="0 0 304 928" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M1146.85 185.759C1180.34 151.958 1180.34 97.1568 1146.85 63.3562L843.68 -242.65C810.193 -276.45 755.899 -276.45 722.411 -242.65L25.1157 461.165C-8.37189 494.965 -8.37189 549.766 25.1157 583.567L722.411 1287.38C755.899 1321.18 810.193 1321.18 843.68 1287.38L1146.85 981.375C1180.34 947.577 1180.34 892.768 1146.85 858.97L873.997 583.567C840.51 549.766 840.51 494.965 873.997 461.165L1146.85 185.759Z" fill="#12161B" />
@@ -449,13 +634,245 @@ export default function Calculadora() {
                             <div className="body-escolhaClas">
 
                                 <div className="container">
-                                    <Carousel slides={eloBLol} />
+
+                                    <div className="row">
+
+
+                                        <div className="elos">
+                                            <div className="etap">
+                                                <div class="icone-etap">1</div>
+                                                <h5>Elo Atual</h5>
+                                            </div>
+
+
+                                            <div className="pl-5">
+                                                {
+                                                    jogo == "leagueoflegends" ?
+
+                                                        tipoJogo == 'eloboost' ?
+                                                            elo.map((elos) => {
+                                                                return (
+
+                                                                    <label className=" escolha-elo-body-atual" for={"atual-" + elos.nome}  >
+
+                                                                        <div className={`escolhe-elo-${elos.nome}`} >
+
+
+                                                                            <img src={elos.caminho} alt={elos.nome} className="elos-img-escolha" />
+
+                                                                            {
+                                                                                elos.nome == 'graomestre' || elos.nome == 'mestre' || elos.nome == 'desafiante' ?
+                                                                                    <input class=" isExpres  " type="radio" value={elos.nome} name='elolol' data-dismiss="modal"
+                                                                                        id={'atual-' + elos.nome} onClick={(event) => { setEloAtual(event.target.value) }} />
+                                                                                    :
+                                                                                    <input class=" isExpres  " type="radio" value={elos.nome} name="divisaolol"
+                                                                                        id={"atual-" + elos.nome} onClick={(event) => { setEloAtual(event.target.value); }} />
+                                                                            }
+
+
+                                                                        </div>
+
+                                                                    </label>
+
+
+                                                                )
+                                                            })
+                                                            :
+                                                            tipoJogo == 'duoboost' ?
+                                                                eloDuo.map((elos) => {
+                                                                    return (
+
+                                                                        <label className=" escolha-elo-body-atual" for={"atual-" + elos.nome} onClick={() => {
+                                                                            mudaEscolhido("escolha-elo-body-atual");
+                                                                        }}>
+
+                                                                            <div className={`escolhe-elo-${elos.nome}`} >
+
+
+                                                                                <img src={elos.caminho} alt={elos.nome} className="elos-img-escolha" />
+
+                                                                                {
+                                                                                    elos.nome == 'graomestre' || elos.nome == 'mestre' || elos.nome == 'desafiante' ?
+                                                                                        <input class=" isExpres  " type="checkbox" value={elos.nome} data-dismiss="modal"
+                                                                                            id={'atual-' + elos.nome} onClick={(event) => { setEloAtualDuo(event.target.value) }} />
+                                                                                        :
+                                                                                        <input class=" isExpres  " type="checkbox" value={elos.nome}
+                                                                                            id={"atual-" + elos.nome} onClick={(event) => { setEloAtualDuo(event.target.value) }} />
+                                                                                }
+
+
+                                                                            </div>
+
+                                                                        </label>
+
+
+                                                                    )
+                                                                })
+                                                                :
+                                                                "Error elos não encontrados"
+                                                        :
+                                                        jogo == "wildrift" ?
+
+                                                            tipoJogo == 'eloboost' ?
+
+                                                                eloWd.map((elos) => {
+                                                                    return (
+
+                                                                        <label className=" escolha-elo-body-atual" for={"atual-" + elos.nome} onClick={() => {
+                                                                            mudaEscolhido("escolha-elo-body-atual");
+                                                                        }}>
+
+                                                                            <div className={`escolhe-elo-${elos.nome}`} >
+
+
+                                                                                <img src={elos.caminho} alt={elos.nome} className="elos-img-escolha" />
+
+                                                                                {
+                                                                                    elos.nome == 'graomestre' || elos.nome == 'mestre' || elos.nome == 'desafiante' ?
+                                                                                        <input class=" isExpres  " type="checkbox" value={elos.nome} data-dismiss="modal"
+                                                                                            id={'atual-' + elos.nome} onClick={(event) => { setEloAtualWd(event.target.value) }} />
+                                                                                        :
+                                                                                        <input class=" isExpres  " type="checkbox" value={elos.nome}
+                                                                                            id={"atual-" + elos.nome} onClick={(event) => { setEloAtualWd(event.target.value) }} />
+                                                                                }
+
+
+                                                                            </div>
+
+                                                                        </label>
+
+
+                                                                    )
+                                                                })
+                                                                :
+                                                                tipoJogo == 'duoboost' ?
+                                                                    eloWdDuo.map((elos) => {
+                                                                        return (
+
+                                                                            <label className=" escolha-elo-body-atual" for={"atual-" + elos.nome} onClick={() => {
+                                                                                mudaEscolhido("escolha-elo-body-atual");
+                                                                            }}>
+
+                                                                                <div className={`escolhe-elo-${elos.nome}`} >
+
+
+                                                                                    <img src={elos.caminho} alt={elos.nome} className="elos-img-escolha" />
+
+                                                                                    {
+                                                                                        elos.nome == 'graomestre' || elos.nome == 'mestre' || elos.nome == 'desafiante' ?
+                                                                                            <input class=" isExpres  " type="checkbox" value={elos.nome} data-dismiss="modal"
+                                                                                                id={'atual-' + elos.nome} onClick={(event) => { setEloAtualWdDuo(event.target.value) }} />
+                                                                                            :
+                                                                                            <input class=" isExpres  " type="checkbox" value={elos.nome}
+                                                                                                id={"atual-" + elos.nome} onClick={(event) => { setEloAtualWdDuo(event.target.value) }} />
+                                                                                    }
+
+
+                                                                                </div>
+
+                                                                            </label>
+
+
+                                                                        )
+                                                                    })
+                                                                    :
+                                                                    'Error elos não encontrados'
+                                                            :
+                                                            elo.map((elos) => { })
+                                                }
+                                            </div>
+
+
+
+                                        </div>
+
+
+                                        <div className="divisoes ">
+
+                                            <div className="etap pt-4">
+                                                <div class="icone-etap">2</div>
+                                                <h5>Divisão Atual</h5>
+
+                                            </div>
+                                            <div className={` divisoes-escolhas   ${eloAtual == 'graomestre' || eloAtual == 'mestre' || eloAtual == 'desafiante' ? 'desabled' : ''} pl-5`}>
+
+                                                {
+
+                                                    jogo == 'leagueoflegends' ?
+                                                        divisao.map((divisoes) => {
+
+                                                            return (
+                                                                <label className='divisoes-escolhas-body-atual  ' htmlFor={"atual-" + divisoes} onClick={() => {
+
+                                                                    mudaEscolhido("divisoes-escolhas-body-atual");
+
+                                                                }}>
+                                                                    <h3>{divisoes}</h3>
+
+                                                                    <input class="isExpress close" data-dismiss="modal" type="checkbox" value={divisoes} id={"atual-" + divisoes} onClick={(event) => {
+
+                                                                        setDivisaoAtual(event.target.value);
+                                                                    }} />
+                                                                </label>
+
+                                                            )
+
+                                                        })
+                                                        :
+                                                        jogo == 'wildrift' ?
+                                                            divisao.map((divisoes) => {
+
+                                                                return (
+                                                                    <label className='divisoes-escolhas-body-atual  ' htmlFor={"atual-" + divisoes} onClick={() => {
+
+                                                                        mudaEscolhido("divisoes-escolhas-body-atual");
+
+                                                                    }}>
+                                                                        <h3>{divisoes}</h3>
+
+                                                                        <input class="isExpress close" data-dismiss="modal" type="checkbox" value={divisoes} id={"atual-" + divisoes} onClick={(event) => {
+
+                                                                            setDivisaoAtualWd(event.target.value)
+
+                                                                        }} />
+                                                                    </label>
+
+                                                                )
+
+                                                            })
+                                                            :
+                                                            divisao.map((divisoes) => {
+
+                                                                return (
+                                                                    <label className='divisoes-escolhas-body-atual  ' htmlFor={"atual-" + divisoes} onClick={() => {
+
+                                                                        mudaEscolhido("divisoes-escolhas-body-atual");
+
+                                                                    }}>
+                                                                        <h3>{divisoes}</h3>
+
+                                                                        <input class="isExpress close" data-dismiss="modal" type="checkbox" value={divisoes} id={"atual-" + divisoes} onClick={(event) => {
+
+                                                                            setDivisaoAtual(event.target.value)
+
+                                                                        }} />
+                                                                    </label>
+
+                                                                )
+
+                                                            })
+
+                                                }
+
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
                                 </div>
 
                             </div>
-
-
-
                         </div>
 
                     </div>
@@ -477,20 +894,315 @@ export default function Calculadora() {
 
                             <div className="body-escolhaClas">
 
+
                                 <div className="container">
-                                    <Carousel slides={eloBLol} />
+
+
+                                    <div className="row">
+
+
+                                        <div className="elos">
+                                            <div className="etap">
+                                                <div class="icone-etap">1</div>
+                                                <h5>Elo Atual</h5>
+                                            </div>
+
+
+                                            <div className="pl-5">
+                                                {
+                                                    jogo == "leagueoflegends" ?
+
+
+                                                        tipoJogo == 'eloboost' ?
+                                                            elo.map((elos) => {
+                                                                return (
+
+                                                                    <label className=" escolha-elo-body" for={elos.nome} onClick={() => {
+                                                                        mudaEscolhido("escolha-elo-body");
+                                                                    }}>
+
+                                                                        <div className={`escolhe-elo-${elos.nome}`} >
+
+
+                                                                            <img src={elos.caminho} alt={elos.nome} className="elos-img-escolha" />
+
+                                                                            {
+                                                                                elos.nome == 'graomestre' || elos.nome == 'mestre' || elos.nome == 'desafiante' ?
+                                                                                    <input class=" isExpres  " type="radio" name="elodesejado" value={elos.nome} data-dismiss="modal"
+                                                                                        id={elos.nome} onClick={(event) => { setEloDesejado(event.target.value) }} />
+                                                                                    :
+                                                                                    <input class=" isExpres  " type="radio" name="elodesejado" value={elos.nome}
+                                                                                        id={elos.nome} onClick={(event) => { setEloDesejado(event.target.value) }} />
+                                                                            }
+
+
+                                                                        </div>
+
+                                                                    </label>
+
+
+                                                                )
+                                                            })
+                                                            :
+
+                                                            tipoJogo == 'duoboost' ?
+                                                                eloDuo.map((elos) => {
+                                                                    return (
+
+                                                                        <label className=" escolha-elo-body" for={elos.nome} onClick={() => {
+                                                                            mudaEscolhido("escolha-elo-body");
+                                                                        }}>
+
+                                                                            <div className={`escolhe-elo-${elos.nome}`} >
+
+
+                                                                                <img src={elos.caminho} alt={elos.nome} className="elos-img-escolha" />
+
+                                                                                {
+                                                                                    elos.nome == 'graomestre' || elos.nome == 'mestre' || elos.nome == 'desafiante' ?
+                                                                                        <input class=" isExpres  " type="radio" name="elodesejado" value={elos.nome} data-dismiss="modal"
+                                                                                            id={elos.nome} onClick={(event) => { setEloDesejadoDuo(event.target.value) }} />
+                                                                                        :
+                                                                                        <input class=" isExpres  " type="radio" name="elodesejado" value={elos.nome}
+                                                                                            id={elos.nome} onClick={(event) => { setEloDesejadoDuo(event.target.value) }} />
+                                                                                }
+
+
+                                                                            </div>
+
+                                                                        </label>
+
+
+                                                                    )
+                                                                })
+                                                                :
+                                                                "Error elos não encontrados"
+                                                        :
+                                                        jogo == "wildrift" ?
+
+                                                            tipoJogo == 'eloboost' ?
+
+                                                                eloWd.map((elos) => {
+                                                                    return (
+
+                                                                        <label className=" escolha-elo-body" for={elos.nome} onClick={() => {
+                                                                            mudaEscolhido("escolha-elo-body");
+                                                                        }}>
+
+                                                                            <div className={`escolhe-elo-${elos.nome}`} >
+
+
+                                                                                <img src={elos.caminho} alt={elos.nome} className="elos-img-escolha" />
+
+                                                                                {
+                                                                                    elos.nome == 'graomestre' || elos.nome == 'mestre' || elos.nome == 'desafiante' ?
+                                                                                        <input class=" isExpres  " type="radio" name="elodesejado" value={elos.nome} data-dismiss="modal"
+                                                                                            id={elos.nome} onClick={(event) => { setEloDesejadoWd(event.target.value) }} />
+                                                                                        :
+                                                                                        <input class=" isExpres  " type="radio" name="elodesejado" value={elos.nome}
+                                                                                            id={elos.nome} onClick={(event) => { setEloDesejadoWd(event.target.value) }} />
+                                                                                }
+
+
+                                                                            </div>
+
+                                                                        </label>
+
+
+                                                                    )
+                                                                })
+                                                                :
+                                                                tipoJogo == 'duoboost' ?
+                                                                    eloWdDuo.map((elos) => {
+                                                                        return (
+
+                                                                            <label className=" escolha-elo-body" for={elos.nome} onClick={() => {
+                                                                                mudaEscolhido("escolha-elo-body");
+                                                                            }}>
+
+                                                                                <div className={`escolhe-elo-${elos.nome}`} >
+
+
+                                                                                    <img src={elos.caminho} alt={elos.nome} className="elos-img-escolha" />
+
+                                                                                    {
+                                                                                        elos.nome == 'graomestre' || elos.nome == 'mestre' || elos.nome == 'desafiante' ?
+                                                                                            <input class=" isExpres  " type="radio" name="elodesejado" value={elos.nome} data-dismiss="modal"
+                                                                                                id={elos.nome} onClick={(event) => { setEloDesejadoWdDuo(event.target.value) }} />
+                                                                                            :
+                                                                                            <input class=" isExpres  " type="radio" name="elodesejado" value={elos.nome}
+                                                                                                id={elos.nome} onClick={(event) => { setEloDesejadoWdDuo(event.target.value) }} />
+                                                                                    }
+
+
+                                                                                </div>
+
+                                                                            </label>
+
+
+                                                                        )
+                                                                    })
+                                                                    :
+                                                                    'Error elos não encontrados'
+                                                            :
+                                                            elo.map((elos) => { })
+                                                }
+                                            </div>
+
+
+
+                                        </div>
+
+
+                                        <div className="divisoes ">
+
+                                            <div className="etap pt-4">
+                                                <div class="icone-etap">2</div>
+                                                <h5>Divisão Atual</h5>
+
+                                            </div>
+                                            <div className={` divisoes-escolhas   ${eloDesejado == 'graomestre' || eloDesejado == 'mestre' || eloDesejado == 'desafiante' ? 'desabled' : ''} pl-5`}>
+
+                                                {
+
+                                                    jogo == 'leagueoflegends' ?
+
+                                                        tipoJogo == 'eloboost' ?
+
+                                                            divisao.map((divisoes) => {
+
+                                                                return (
+                                                                    <label className='divisoes-escolhas-body  ' htmlFor={divisoes} onClick={() => {
+
+                                                                        mudaEscolhido("divisoes-escolhas-body");
+
+                                                                    }}>
+                                                                        <h3>{divisoes}</h3>
+
+                                                                        <input class="isExpress close" data-dismiss="modal" type="radio" name="divisaoDesejado" value={divisoes} id={divisoes} onClick={(event) => {
+
+                                                                            setDivisaoDesejado(event.target.value)
+
+                                                                        }} />
+                                                                    </label>
+
+                                                                )
+
+                                                            })
+                                                            :
+                                                            tipoJogo == 'duoboost' ?
+
+                                                                divisao.map((divisoes) => {
+
+                                                                    return (
+                                                                        <label className='divisoes-escolhas-body  ' htmlFor={divisoes} onClick={() => {
+
+                                                                            mudaEscolhido("divisoes-escolhas-body");
+
+                                                                        }}>
+                                                                            <h3>{divisoes}</h3>
+
+                                                                            <input class="isExpress close" data-dismiss="modal" type="radio" name="divisaoDesejado" value={divisoes} id={divisoes} onClick={(event) => {
+
+                                                                                setDivisaoDesejadoDuo(event.target.value)
+
+                                                                            }} />
+                                                                        </label>
+
+                                                                    )
+
+                                                                })
+                                                                :
+                                                                'Error divisões não encontradas'
+                                                        :
+                                                        jogo == 'wildrift' ?
+
+                                                            tipoJogo == 'eloboost' ?
+                                                                divisao.map((divisoes) => {
+
+                                                                    return (
+                                                                        <label className='divisoes-escolhas-body ' htmlFor={divisoes} onClick={() => {
+
+                                                                            mudaEscolhido("divisoes-escolhas-body ");
+
+                                                                        }}>
+                                                                            <h3>{divisoes}</h3>
+
+                                                                            <input class="isExpress close" data-dismiss="modal" type="radio" name="divisaoDesejado" value={divisoes} id={divisoes} onClick={(event) => {
+
+                                                                                setDivisaoDesejadoWd(event.target.value)
+
+                                                                            }} />
+                                                                        </label>
+
+                                                                    )
+
+
+                                                                })
+                                                                :
+                                                                tipoJogo == 'duoboost' ?
+                                                                    divisao.map((divisoes) => {
+
+                                                                        return (
+                                                                            <label className='divisoes-escolhas-body ' htmlFor={divisoes} onClick={() => {
+
+                                                                                mudaEscolhido("divisoes-escolhas-body ");
+
+                                                                            }}>
+                                                                                <h3>{divisoes}</h3>
+
+                                                                                <input class="isExpress close" data-dismiss="modal" type="radio" name="divisaoDesejado" value={divisoes} id={divisoes} onClick={(event) => {
+
+                                                                                    setDivisaoDesejadoWdDuo(event.target.value)
+
+                                                                                }} />
+                                                                            </label>
+
+                                                                        )
+
+
+                                                                    })
+                                                                    :
+                                                                    'Error divisões não encontradas'
+                                                            :
+                                                            divisao.map((divisoes) => {
+
+                                                                return (
+                                                                    <label className='divisoes-escolhas-body  ' htmlFor={divisoes} onClick={() => {
+
+                                                                        mudaEscolhido("divisoes-escolhas-body ");
+
+                                                                    }}>
+                                                                        <h3>{divisoes}</h3>
+
+                                                                        <input class="isExpress close" data-dismiss="modal" type="radio" name="divisaoDesejado" value={divisoes} id={divisoes} onClick={(event) => {
+
+                                                                            setDivisaoDesejadoWd(event.target.value)
+
+                                                                        }} />
+                                                                    </label>
+
+                                                                )
+
+                                                            })
+
+                                                }
+
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
                                 </div>
 
                             </div>
-
-
 
                         </div>
 
                     </div>
                 </div>
             </div>
-
 
 
         </div>

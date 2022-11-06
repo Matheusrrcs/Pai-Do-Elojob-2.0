@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/Pai-Do-Elojob-2.0/static/css/main.12da1f53.css",
-    "main.js": "/Pai-Do-Elojob-2.0/static/js/main.31f1c2fc.js",
+    "main.css": "/Pai-Do-Elojob-2.0/static/css/main.21390ccd.css",
+    "main.js": "/Pai-Do-Elojob-2.0/static/js/main.6f324d46.js",
     "static/media/braum.webm": "/Pai-Do-Elojob-2.0/static/media/braum.ee1559115a330d181dd4.webm",
     "static/media/braum_bgk_still.jpg": "/Pai-Do-Elojob-2.0/static/media/braum_bgk_still.6344030c60567b90606a.jpg",
     "static/media/Nelson Engraved.otf": "/Pai-Do-Elojob-2.0/static/media/Nelson Engraved.18516a572af95fb4589b.otf",
@@ -13,8 +13,19 @@
     "static/media/volibier.png": "/Pai-Do-Elojob-2.0/static/media/volibier.3b7e65d06a76e31a3549.png",
     "static/media/shen.png": "/Pai-Do-Elojob-2.0/static/media/shen.32769c190f7335c5adf0.png",
     "static/media/ashe.png": "/Pai-Do-Elojob-2.0/static/media/ashe.00aa272be00295af65df.png",
+    "static/media/desafiante.webp": "/Pai-Do-Elojob-2.0/static/media/desafiante.74b7937de8c9df44f958.webp",
+    "static/media/graomestre.webp": "/Pai-Do-Elojob-2.0/static/media/graomestre.299251cbb86514fc0be5.webp",
+    "static/media/prata.webp": "/Pai-Do-Elojob-2.0/static/media/prata.88e2b7df917b8b6b453c.webp",
+    "static/media/mestre.webp": "/Pai-Do-Elojob-2.0/static/media/mestre.6a89bca0501fbd051b2f.webp",
+    "static/media/ouro.webp": "/Pai-Do-Elojob-2.0/static/media/ouro.3a2b226ebc1c86d38109.webp",
+    "static/media/diamante.webp": "/Pai-Do-Elojob-2.0/static/media/diamante.4132c6ef985e01a68dfa.webp",
+    "static/media/platina.webp": "/Pai-Do-Elojob-2.0/static/media/platina.1551ccb2c8ab724cbc20.webp",
+    "static/media/bronze.webp": "/Pai-Do-Elojob-2.0/static/media/bronze.95d8164cae9c2853997f.webp",
     "static/media/textureBG.jpg": "/Pai-Do-Elojob-2.0/static/media/textureBG.9d170437e700631cae37.jpg",
+    "static/media/esmeralda.webp": "/Pai-Do-Elojob-2.0/static/media/esmeralda.5b4e9941324bfb78661b.webp",
+    "static/media/ferro.webp": "/Pai-Do-Elojob-2.0/static/media/ferro.ebfef29fc694cf43d0e7.webp",
     "static/media/payment-methods.webp": "/Pai-Do-Elojob-2.0/static/media/payment-methods.e1fcf60c63af3ce5c910.webp",
+    "static/media/carregamento.svg": "/Pai-Do-Elojob-2.0/static/media/carregamento.87232490822d3249fb70827d67f4ceb4.svg",
     "index.html": "/Pai-Do-Elojob-2.0/index.html",
     "static/media/wr.svg": "/Pai-Do-Elojob-2.0/static/media/wr.30243cd1827a96c3500971927bdaa368.svg",
     "static/media/lol.svg": "/Pai-Do-Elojob-2.0/static/media/lol.41b0c116f39b05862381f213932af884.svg",
@@ -22,11 +33,11 @@
     "static/media/titleDivider.svg": "/Pai-Do-Elojob-2.0/static/media/titleDivider.8d6edd1f80bb08c107277e981a363cb5.svg",
     "static/media/waves.svg": "/Pai-Do-Elojob-2.0/static/media/waves.dec6ede18693da4349c281dd50d84728.svg",
     "static/media/valorant.svg": "/Pai-Do-Elojob-2.0/static/media/valorant.d2b5f357ca190f11c132be8ae76d896b.svg",
-    "main.12da1f53.css.map": "/Pai-Do-Elojob-2.0/static/css/main.12da1f53.css.map",
-    "main.31f1c2fc.js.map": "/Pai-Do-Elojob-2.0/static/js/main.31f1c2fc.js.map"
+    "main.21390ccd.css.map": "/Pai-Do-Elojob-2.0/static/css/main.21390ccd.css.map",
+    "main.6f324d46.js.map": "/Pai-Do-Elojob-2.0/static/js/main.6f324d46.js.map"
   },
   "entrypoints": [
-    "static/css/main.12da1f53.css",
-    "static/js/main.31f1c2fc.js"
+    "static/css/main.21390ccd.css",
+    "static/js/main.6f324d46.js"
   ]
 }

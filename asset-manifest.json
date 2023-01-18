@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/Pai-Do-Elojob-2.0/static/css/main.21390ccd.css",
-    "main.js": "/Pai-Do-Elojob-2.0/static/js/main.6f324d46.js",
+    "main.css": "/Pai-Do-Elojob-2.0/static/css/main.cf86333b.css",
+    "main.js": "/Pai-Do-Elojob-2.0/static/js/main.58dcaaf3.js",
     "static/media/braum.webm": "/Pai-Do-Elojob-2.0/static/media/braum.ee1559115a330d181dd4.webm",
     "static/media/braum_bgk_still.jpg": "/Pai-Do-Elojob-2.0/static/media/braum_bgk_still.6344030c60567b90606a.jpg",
     "static/media/Nelson Engraved.otf": "/Pai-Do-Elojob-2.0/static/media/Nelson Engraved.18516a572af95fb4589b.otf",
@@ -29,15 +29,15 @@
     "index.html": "/Pai-Do-Elojob-2.0/index.html",
     "static/media/wr.svg": "/Pai-Do-Elojob-2.0/static/media/wr.30243cd1827a96c3500971927bdaa368.svg",
     "static/media/lol.svg": "/Pai-Do-Elojob-2.0/static/media/lol.41b0c116f39b05862381f213932af884.svg",
-    "static/media/line.svg": "/Pai-Do-Elojob-2.0/static/media/line.188053b86f315dfe735cd44da6e0869c.svg",
-    "static/media/titleDivider.svg": "/Pai-Do-Elojob-2.0/static/media/titleDivider.8d6edd1f80bb08c107277e981a363cb5.svg",
+    "static/media/line.svg": "/Pai-Do-Elojob-2.0/static/media/line.f90b5f9908d03fd7582cd1437beb6977.svg",
+    "static/media/titleDivider.svg": "/Pai-Do-Elojob-2.0/static/media/titleDivider.cfec119887eebe0b0a987b4c7bf59865.svg",
     "static/media/waves.svg": "/Pai-Do-Elojob-2.0/static/media/waves.dec6ede18693da4349c281dd50d84728.svg",
     "static/media/valorant.svg": "/Pai-Do-Elojob-2.0/static/media/valorant.d2b5f357ca190f11c132be8ae76d896b.svg",
-    "main.21390ccd.css.map": "/Pai-Do-Elojob-2.0/static/css/main.21390ccd.css.map",
-    "main.6f324d46.js.map": "/Pai-Do-Elojob-2.0/static/js/main.6f324d46.js.map"
+    "main.cf86333b.css.map": "/Pai-Do-Elojob-2.0/static/css/main.cf86333b.css.map",
+    "main.58dcaaf3.js.map": "/Pai-Do-Elojob-2.0/static/js/main.58dcaaf3.js.map"
   },
   "entrypoints": [
-    "static/css/main.21390ccd.css",
-    "static/js/main.6f324d46.js"
+    "static/css/main.cf86333b.css",
+    "static/js/main.58dcaaf3.js"
   ]
 }
